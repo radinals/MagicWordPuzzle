@@ -1,4 +1,4 @@
-package com.core.screens.loading;
+package com.core.screens.util.loading;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -12,23 +12,19 @@ import com.main.Main;
 
 public class LoadingScreen implements Screen {
 
-    public Main main;
-
     private final Texture texture;
     private final SpriteAnimation loadingText;
-
-    private boolean assetsLoaded;
+    private final static float BASE_LOADING_SCREEN_TIME = 2f;
+    public Main main;
     private boolean loadingFinished;
     private float loadingTimer = 0f;
-    private final float waitTime = 2f;
-
     private GameAssets assets;
 
     public LoadingScreen(Main main) {
         Gdx.graphics.setContinuousRendering(true);
         this.main = main;
         this.texture = new Texture(Gdx.files.internal("loading.png"));
-        this.loadingText = new SpriteAnimation("loadingtext.png", 4, 5900, 4000, 0.1f);
+        this.loadingText = new SpriteAnimation("loadingtext.png",  4, 0.1f);
     }
 
     @Override
@@ -42,8 +38,8 @@ public class LoadingScreen implements Screen {
         TextureRegion frame = loadingText.getFrame(delta, true);
         float frameH = Gdx.graphics.getHeight() * 0.05f;
         float frameW = Gdx.graphics.getWidth() * 0.6f;
-        float centerX = Gdx.graphics.getWidth() / 2;
-        float centerY = Gdx.graphics.getHeight() / 2;
+        float centerX = (float)Gdx.graphics.getWidth() / 2;
+        float centerY = (float)Gdx.graphics.getHeight() / 2;
 
         main.getBatch().begin();
         main.getBatch().draw(texture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -56,7 +52,7 @@ public class LoadingScreen implements Screen {
             loadingFinished = true;
         }
 
-        if (loadingFinished && loadingTimer >= waitTime) {
+        if (loadingFinished && loadingTimer >= BASE_LOADING_SCREEN_TIME) {
             Gdx.graphics.setContinuousRendering(false);
             Gdx.graphics.requestRendering();
             main.gameAssets = assets;

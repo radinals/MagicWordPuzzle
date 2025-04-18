@@ -1,7 +1,7 @@
-package com.core.screens.gameplay.level.randomizer;
+package com.core.screens.subscreen.play.level.core.randomizer;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.core.screens.gameplay.level.btn.LevelPairButtons;
+import com.core.screens.subscreen.play.level.core.btn.group.ButtonPair;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class LevelRandomizer {
 
-    public static LinkedList<Button> generateShuffledButtons(ArrayList<LevelPairButtons> levelObjects) {
+    public static LinkedList<Button> generateShuffledButtons(ArrayList<ButtonPair> levelObjects) {
 
         LinkedList<Button> btns = new LinkedList<>();
 

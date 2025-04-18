@@ -1,26 +1,20 @@
-package com.game.data;
+package com.core.data.game.manager;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.XmlReader;
-import com.game.data.container.CardData;
-import com.game.data.container.CategoryData;
-import com.game.data.container.LevelData;
+import com.core.data.game.container.CardData;
+import com.core.data.game.container.CategoryData;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public class GameConfig {
 
-    private HashMap<String, CategoryData> categories;
+    private final HashMap<String, CategoryData> categories;
 
-    private LinkedList<CardData> cards;
-
-    public GameConfig() {
-        this.cards = new LinkedList<>();
-        this.categories = new HashMap<>();
-    }
+    private final LinkedList<CardData> cards;
 
     public GameConfig(String configXML) {
         this.cards = new LinkedList<>();
@@ -44,23 +38,29 @@ public class GameConfig {
             XmlReader.Element root = reader.parse(file);
             for (XmlReader.Element category : root.getChildrenByName("category")) {
 
-                int levelCount = Integer.valueOf(category.getAttribute("levels", "0"));
+                int levelCount = Integer.parseInt(category.getAttribute("levels", "0"));
                 String categoryName = category.getAttribute("name", null);
                 String categoryIcon = category.getAttribute("icon", null);
+                String levelIconColor = category.getAttribute("LevelIconColor", "#FFFFFF");
+                String bgImage = category.getAttribute("categorybg", "test.png");
 
-                if(categoryName == null || categoryIcon == null) continue;
+                if (categoryName == null || categoryIcon == null) continue;
 
-                CategoryData categoryData = new CategoryData(categoryName, categoryIcon, levelCount);
+                CategoryData categoryData = new CategoryData(categoryName, categoryIcon, levelCount, bgImage);
 
+                categoryData.setLevelIconColor(Color.valueOf(levelIconColor));
 
                 for (XmlReader.Element card : category.getChildrenByName("card")) {
-                    Integer levelId = Integer.valueOf(card.getAttribute("group", "-1"));
+                    int levelId = Integer.parseInt(card.getAttribute("group", "-1"));
 
                     String word = card.getAttribute("word", null);
                     String icon = card.getAttribute("img", null);
-                    if(word == null || icon == null || levelId == -1) continue;
+                    String audio = card.getAttribute("audio", null);
 
-                    CardData cardData = new CardData(word,icon);
+                    if (word == null || icon == null || levelId == -1) continue;
+
+                    CardData cardData = new CardData(word, icon, audio);
+
                     this.cards.add(cardData);
                     categoryData.addCard(levelId, cardData);
                 }
@@ -69,7 +69,6 @@ public class GameConfig {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
             Gdx.app.exit();
         }
 

@@ -1,16 +1,16 @@
-package com.core.screens.subscreen.play.level.core.btn.binding;
+package com.core.screens.subscreen.play.level.core.btn.event;
 
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.core.screens.subscreen.play.level.core.Level;
 
-public class ClickedBinding extends ClickListener {
+public class ClickedEvent extends ClickListener {
 
     private final Level level;
     private final Sound clickSound;
 
-    public ClickedBinding(Sound sound, Level level) {
+    public ClickedEvent(Sound sound, Level level) {
         this.level = level;
         this.clickSound = sound;
     }

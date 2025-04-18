@@ -1,4 +1,4 @@
-package com.core.screens.transition;
+package com.core.screens.util.transition;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -50,9 +50,6 @@ public class SlideOutScreen implements Screen {
         this.oldScreen.pause();
         this.newScreen.pause();
 
-        this.newScreen.show();
-        this.newScreen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        this.newScreen.render(0);
 
     }
 
@@ -62,6 +59,9 @@ public class SlideOutScreen implements Screen {
 
     @Override
     public void show() {
+        this.newScreen.show();
+        this.newScreen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        this.newScreen.render(0);
 
     }
 
@@ -85,7 +85,6 @@ public class SlideOutScreen implements Screen {
         float width = oldScreenTexture.getWidth();
         float offset = slideLeft ? -width * alpha : width * alpha;
 
-
         main.getBatch().begin();
         main.getBatch().draw(oldScreenTexture,
             offset, 0,
@@ -96,14 +95,15 @@ public class SlideOutScreen implements Screen {
             offset + (slideLeft ? oldScreenTexture.getWidth() : -oldScreenTexture.getWidth()), 0,
             newScreenTexture.getWidth(), newScreenTexture.getHeight(),
             0, 0, 1, 1);
+
         main.getBatch().end();
 
-
         if (currentTime >= duration) {
+            newScreen.resume();
+            oldScreen.resume();
             Gdx.graphics.setContinuousRendering(false);
             Gdx.graphics.requestRendering();
             main.setScreen(newScreen);
-            newScreen.resume();
         }
 
     }

@@ -1,4 +1,4 @@
-package com.core.customcomponent.dialog;
+package com.core.screens.util;
 
 public class PopupDialog {
 }

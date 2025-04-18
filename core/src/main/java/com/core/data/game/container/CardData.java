@@ -1,18 +1,15 @@
-package com.game.data.container;
+package com.core.data.game.container;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class CardData {
-    private String word;
-    private Texture img;
+    private final String word;
+    private final Texture img;
+    private final String audiofile;
 
-    public CardData(String word, String imgFile) {
+    public CardData(String word, String imgFile, String audiofile) {
+        this.audiofile = audiofile;
         this.word = word;
         this.img = new Texture(Gdx.files.internal(imgFile));
     }
@@ -23,5 +20,9 @@ public class CardData {
 
     public Texture getImg() {
         return this.img;
+    }
+
+    public String getAudio() {
+        return audiofile;
     }
 }

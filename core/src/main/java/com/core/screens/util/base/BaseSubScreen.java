@@ -1,4 +1,4 @@
-package com.core.screens.base;
+package com.core.screens.util.base;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -6,57 +6,87 @@ import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.main.Main;
 
 public class BaseSubScreen extends BaseScreen {
-    protected float contentYAxis;
     protected float backBtnSize;
+    protected Label screenTitle;
+
+    protected Table topRowTable;
 
     public BaseSubScreen(Main main) {
         super(main);
+        this.topRowTable = new Table();
         Gdx.input.setInputProcessor(stage);
+        topRowTable.setDebug(true);
+        topRowTable.left().top();
         calculateSizes();
         createBackButton();
+        createScreenTitle();
+        this.stage.addActor(topRowTable);
     }
 
     private void calculateSizes() {
+        this.topRowTable.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getWidth() * 0.15f);
+        this.topRowTable.setPosition(0, Gdx.graphics.getHeight() - topRowTable.getHeight());
+        this.topRowTable.setOriginX(0);
         this.backBtnSize = Gdx.graphics.getWidth() * 0.15f;
-        contentYAxis = (Gdx.graphics.getHeight() - (backBtnSize + 10)) - backBtnSize;
+    }
+
+    private void createScreenTitle() {
+        Label.LabelStyle style = new Label.LabelStyle();
+
+        // TODO: SETUP BUTTON BG
+        style.font = new BitmapFont(Gdx.files.internal("default.fnt"));
+        style.font.getData().setScale(3f); // unreliable for UI
+        style.fontColor = Color.BLACK;
+
+        screenTitle = new Label("", style);
+
+        screenTitle.setWidth(topRowTable.getWidth());
+
+        topRowTable.add(screenTitle).left().expandX().fillX().pad(10);
     }
 
     private void createBackButton() {
-        Texture backIconTexture = new Texture(Gdx.files.internal("backarrow.png"));
-
-        backIconTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-
-        TextureRegionDrawable backButtonIcon = new TextureRegionDrawable(backIconTexture);
-
+        TextureRegionDrawable backButtonIcon = new TextureRegionDrawable(main.getBaseAssets().assetManager.get("backarrow.png", Texture.class));
         backButtonIcon.setMinSize(backBtnSize, backBtnSize);
 
-        ImageButton backButton = new ImageButton(backButtonIcon);
+        ImageButton.ImageButtonStyle style = new ImageButton.ImageButtonStyle();
+
+        style.imageUp = backButtonIcon.tint(Color.valueOf("#00f2ff"));
+        style.imageDown = backButtonIcon.tint(Color.GRAY);
+
+        ImageButton backButton = new ImageButton(style);
 
         backButton.setSize(backBtnSize, backBtnSize);
 
-        backButton.getImage().setColor(Color.valueOf("#00f2ff"));
-
-        backButton.setPosition(10, Gdx.graphics.getHeight() - (backBtnSize + 10));
-
         backButton.addListener(new ClickListener() {
             @Override
-            public void clicked(InputEvent event, float x, float y) {
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                pause();
+                return pointer == 0;
+            }
+
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                if (pointer != 0) return;
                 ImageButton btn = (ImageButton) event.getListenerActor();
                 if (btn.isDisabled()) return;
                 main.screenManager.loadLastScreen();
                 Gdx.graphics.requestRendering();
+                super.touchUp(event, x, y, pointer, button);
             }
         });
 
-        this.stage.addActor(backButton);
-        this.stage.setActionsRequestRendering(false);
+        topRowTable.add(backButton).left().fillX().pad(10);
     }
 
     @Override
@@ -68,7 +98,6 @@ public class BaseSubScreen extends BaseScreen {
 
         InputMultiplexer multiplexer = new InputMultiplexer();
 
-        // First, your back key handler
         multiplexer.addProcessor(new InputAdapter() {
             @Override
             public boolean keyDown(int keycode) {
@@ -80,7 +109,6 @@ public class BaseSubScreen extends BaseScreen {
             }
         });
 
-        // Then the stage, so UI still works
         multiplexer.addProcessor(stage);
 
         Gdx.input.setInputProcessor(multiplexer);

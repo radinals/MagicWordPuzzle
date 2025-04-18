@@ -1,4 +1,4 @@
-package com.game.assets;
+package com.core.data.assets.font;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
@@ -7,24 +7,22 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class BitNumbersSprites {
-
-    private final TextureRegionDrawable[] sprites;
 
     private static final int NUMBERLIMIT = 100;
     private final static int TILEW = 333;
     private final static int TILEH = 500;
+    private final TextureRegion[] sprites;
 
     public BitNumbersSprites() {
         Texture spritesheet = new Texture(Gdx.files.internal("nums.png"));
         TextureRegion[][] frames = TextureRegion.split(spritesheet, TILEW, TILEH);
-        sprites = new TextureRegionDrawable[NUMBERLIMIT+1];
-        for(int i=0; i < NUMBERLIMIT; i++) sprites[i] = createNumberTexture(i, frames);
+        sprites = new TextureRegion[NUMBERLIMIT + 1];
+        for (int i = 0; i < NUMBERLIMIT; i++) sprites[i] = createNumberTexture(i, frames);
     }
 
-    public TextureRegionDrawable getNumber(int i) {
+    public TextureRegion getNumber(int i) {
         if (i >= NUMBERLIMIT || i < 0) i = 0;
         return sprites[i];
     }
@@ -54,13 +52,11 @@ public class BitNumbersSprites {
         return result;
     }
 
-    private TextureRegionDrawable createNumberTexture(int number, TextureRegion[][] frames) {
+    private TextureRegion createNumberTexture(int number, TextureRegion[][] frames) {
 
-        TextureRegion numberTRegion = null;
+        TextureRegion numberTRegion;
 
-        if (number >= 100) {
-            number = 0;
-        }
+        if (number >= 100) number = 0; // FIXME: ONLY SUPPORTS 2 DIGITS
 
         if (number >= 10) {
             final TextureRegion firstDigit = frames[0][number / 10];
@@ -72,6 +68,7 @@ public class BitNumbersSprites {
 
         if (numberTRegion == null || numberTRegion.getTexture() == null) return null;
 
-        return new TextureRegionDrawable(numberTRegion);
+        return numberTRegion;
     }
+
 }

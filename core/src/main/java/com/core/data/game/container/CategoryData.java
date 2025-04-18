@@ -1,24 +1,38 @@
-package com.game.data.container;
+package com.core.data.game.container;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-
 public class CategoryData {
-    private String categoryName;
-    private Texture categoryIcon;
-    private LevelData[] levels;
+    private final String categoryName;
+    private final Texture categoryIcon;
+    private final LevelData[] levels;
+    private final Texture categoryBackgroundImage;
+    private Color levelIconColor;
     private int levelCount;
 
 
-    public CategoryData(String categoryName, String categoryIcon, int levelCount) {
+    public CategoryData(String categoryName, String categoryIcon, int levelCount, String categoryBgFile) {
         this.categoryName = categoryName;
         this.levelCount = 0;
         this.levels = new LevelData[levelCount];
-        for(int i = 0; i < levelCount; this.levels[i++] = null);
+        for (int i = 0; i < levelCount; this.levels[i++] = null) ;
         this.categoryIcon = new Texture(Gdx.files.internal(categoryIcon));
+        this.categoryBackgroundImage = new Texture(Gdx.files.internal(categoryBgFile));
+        this.levelIconColor = null;
+    }
+
+    public Texture getCategoryBackgroundImage() {
+        return categoryBackgroundImage;
+    }
+
+    public Color getLevelIconColor() {
+        return levelIconColor;
+    }
+
+    public void setLevelIconColor(Color color) {
+        this.levelIconColor = color;
     }
 
     public Texture getCategoryIcon() {
@@ -37,16 +51,8 @@ public class CategoryData {
         return this.levelCount;
     }
 
-    public void addCard(int levelIdx, String word, String imgFile) throws ArrayIndexOutOfBoundsException {
-        if (this.levels[levelIdx] == null ) {
-            this.levels[levelIdx] = new LevelData();
-            levelCount++;
-        }
-        this.levels[levelIdx].addCard(word, imgFile);
-    }
-
     public void addCard(int levelIdx, CardData card) throws ArrayIndexOutOfBoundsException {
-        if (this.levels[levelIdx] == null ) {
+        if (this.levels[levelIdx] == null) {
             this.levels[levelIdx] = new LevelData();
             levelCount++;
         }

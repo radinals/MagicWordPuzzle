@@ -1,4 +1,4 @@
-package com.core.screens.standalone;
+package com.core.screens.subscreen.learn;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.core.data.game.container.CardData;
-import com.core.screens.base.BaseSubScreen;
+import com.core.screens.util.base.BaseSubScreen;
 import com.main.Main;
 
 public class LearningScreen extends BaseSubScreen {
@@ -35,7 +35,7 @@ public class LearningScreen extends BaseSubScreen {
         table.addListener(new ActorGestureListener() {
             @Override
             public void pan(InputEvent event, float x, float y, float deltaX, float deltaY) {
-                if (x > Gdx.graphics.getWidth() / 2) {
+                if (x > (float)Gdx.graphics.getWidth() / 2) {
                     idx += 1;
                 } else {
                     idx -= 1;
@@ -50,7 +50,7 @@ public class LearningScreen extends BaseSubScreen {
             @Override
             public void tap(InputEvent event, float x, float y, int count, int button) {
 
-                if (x > Gdx.graphics.getWidth() / 2) {
+                if (x > (float)Gdx.graphics.getWidth() / 2) {
                     idx += count;
                 } else {
                     idx -= count;
@@ -77,7 +77,7 @@ public class LearningScreen extends BaseSubScreen {
 
     private void calculateSize() {
         this.table.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight() * 0.8f);
-        this.table.setPosition(Gdx.graphics.getWidth() / 2 - this.table.getWidth() / 2, Gdx.graphics.getHeight() * 0.1f);
+        this.table.setPosition((float)Gdx.graphics.getWidth() / 2 - this.table.getWidth() / 2, Gdx.graphics.getHeight() * 0.1f);
         this.table.setDebug(true);
         this.btnWidth = Gdx.graphics.getWidth() * 0.8f;
         this.btnHeight = Gdx.graphics.getHeight() * 0.7f;
@@ -106,9 +106,7 @@ public class LearningScreen extends BaseSubScreen {
         TextureRegionDrawable drawable = new TextureRegionDrawable(icon);
         drawable.setMinSize(this.btnWidth, this.btnHeight);
 
-        Image img = new Image(drawable);
-
-        return img;
+        return new Image(drawable);
     }
 
     // IDEA: TODO:  OVERRIDING SINGLE BUTTON REPEATEDLY OR LOADING AT PRESS

@@ -1,225 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <category name="Animals" icon="test.png" levels="10">
-        <level id="1">
-            <card word="Lion" img=""/>
-            <card word="Eagle" img=""/>
-            <card word="Dog" img=""/>
-            <card word="Cow" img=""/>
-        </level>
-
-        <level id="2">
-            <card word="Whale" img=""/>
-            <card word="Peacock" img=""/>
-            <card word="Elephant" img=""/>
-            <card word="Bee" img=""/>
-        </level>
-
-        <level id="3">
-            <card word="Snake" img=""/>
-            <card word="Shark" img=""/>
-            <card word="Octopus" img=""/>
-            <card word="Ant" img=""/>
-        </level>
-
-        <level id="4">
-            <card word="Parrot" img=""/>
-            <card word="Lizard" img=""/>
-            <card word="Jellyfish" img=""/>
-            <card word="Goat" img=""/>
-        </level>
-
-        <level id="5">
-            <card word="Zebra" img=""/>
-            <card word="Turtle" img=""/>
-            <card word="Sheep" img=""/>
-            <card word="Horse" img=""/>
-        </level>
+    <category name="Animals" icon="category/animals.png" levels="300" LevelIconColor="#f7ae2d" categorybg="category/bg/bg_animals.png">
+        <card word="lion" img="test.png" audio="audio/animals/lion.wav" group="0"/>
+        <card word="tiger" img="test.png" audio="audio/animals/tiger.wav" group="0"/>
+        <card word="bear" img="test.png" audio="audio/animals/bear.wav" group="0"/>
+        <card word="elephant" img="test.png" audio="audio/animals/elephant.wav" group="0"/>
+        <card word="giraffe" img="test.png" audio="audio/animals/giraffe.wav" group="0"/>
+        <card word="zebra" img="test.png" audio="audio/animals/zebra.wav" group="1"/>
+        <card word="kangaroo" img="test.png" audio="audio/animals/kangaroo.wav" group="1"/>
+        <card word="koala" img="test.png" audio="audio/animals/koala.wav" group="1"/>
+        <card word="monkey" img="test.png" audio="audio/animals/monkey.wav" group="1"/>
+        <card word="panda" img="test.png" audio="audio/animals/panda.wav" group="1"/>
+        <card word="wolf" img="test.png" audio="audio/animals/wolf.wav" group="2"/>
+        <card word="fox" img="test.png" audio="audio/animals/fox.wav" group="2"/>
+        <card word="deer" img="test.png" audio="audio/animals/deer.wav" group="2"/>
+        <card word="rabbit" img="test.png" audio="audio/animals/rabbit.wav" group="2"/>
+        <card word="squirrel" img="test.png" audio="audio/animals/squirrel.wav" group="2"/>
+        <card word="camel" img="test.png" audio="audio/animals/camel.wav" group="3"/>
+        <card word="hippopotamus" img="test.png" audio="audio/animals/hippopotamus.wav" group="3"/>
+        <card word="rhinoceros" img="test.png" audio="audio/animals/rhinoceros.wav" group="3"/>
+        <card word="leopard" img="test.png" audio="audio/animals/leopard.wav" group="3"/>
+        <card word="cheetah" img="test.png" audio="audio/animals/cheetah.wav" group="3"/>
+        <card word="whale" img="test.png" audio="audio/animals/whale.wav" group="4"/>
+        <card word="dolphin" img="test.png" audio="audio/animals/dolphin.wav" group="4"/>
+        <card word="shark" img="test.png" audio="audio/animals/shark.wav" group="4"/>
+        <card word="octopus" img="test.png" audio="audio/animals/octopus.wav" group="4"/>
+        <card word="eagle" img="test.png" audio="audio/animals/eagle.wav" group="4"/>
+        <card word="hawk" img="test.png" audio="audio/animals/hawk.wav" group="5"/>
+        <card word="owl" img="test.png" audio="audio/animals/owl.wav" group="5"/>
+        <card word="penguin" img="test.png" audio="audio/animals/penguin.wav" group="5"/>
+        <card word="seal" img="test.png" audio="audio/animals/seal.wav" group="5"/>
+        <card word="alligator" img="test.png" audio="audio/animals/alligator.wav" group="5"/>
     </category>
-
-    <category name="Fruits" icon="test.png" levels="5">
-        <level id="1">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="2">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="3">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="4">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="5">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
+    <category name="B" icon="category/fruits.png" levels="300" categorybg="category/bg/bg_fruits.png">
     </category>
-
-    <category name="Planets" icon="test.png" levels="5">
-        <level id="1">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="2">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="3">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="4">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="5">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
+    <category name="C" icon="category/planet.png" levels="300" categorybg="category/bg/bg_planet.png">
     </category>
-
-    <category name="Profession" icon="test.png" levels="5">
-        <level id="1">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="2">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="3">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="4">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="5">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
+    <category name="D" icon="category/professions.png" levels="300" categorybg="category/bg/bg_profession.png">
     </category>
-
-    <category name="School Supplies" icon="test.png" levels="5">
-        <level id="1">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="2">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="3">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="4">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="5">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
+    <category name="E" icon="category/schoolsupplies.png" levels="300" categorybg="category/bg/bg_school.png">
     </category>
-
-    <category name="Transportation" icon="test.png" levels="5" levelbtntint="#FF0000">
-        <level id="1">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="2">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="3">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="4">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
-
-        <level id="5">
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-            <card word="" img=""/>
-        </level>
+    <category name="F" icon="category/transport.png" levels="300" categorybg="category/bg/bg_transport.png">
     </category>
 
 

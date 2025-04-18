@@ -1,35 +1,14 @@
-package com.core.screens.gameplay.level.btn;
+package com.core.screens.subscreen.play.level.core.btn.group;
 
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
-public class LevelPairButtons {
+public class ButtonPair {
     public TextButton wordButton;
     public ImageButton imgButton;
 
-    private boolean imgButtonLined;
-    private final boolean wordButtonLined;
-
-    public LevelPairButtons(TextButton wordButton, ImageButton imgButton) {
+    public ButtonPair(TextButton wordButton, ImageButton imgButton) {
         this.wordButton = wordButton;
         this.imgButton = imgButton;
-        this.wordButtonLined = false;
-        this.imgButtonLined = false;
-    }
-
-    public void setImageButtonLined() {
-        this.imgButtonLined = true;
-    }
-
-    public void setWordButtonLined() {
-        this.imgButtonLined = true;
-    }
-
-    public boolean isImgButtonLined() {
-        return imgButtonLined;
-    }
-
-    public boolean isWordButtonLined() {
-        return wordButtonLined;
     }
 }

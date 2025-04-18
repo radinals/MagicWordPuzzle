@@ -1,13 +1,14 @@
-package com.core.screens.gameplay.level;
+package com.core.screens.subscreen.play.level.core;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.core.screens.gameplay.level.btn.LevelPairButtons;
-import com.core.screens.gameplay.level.btn.binding.LevelButtonFactory;
-import com.core.screens.gameplay.level.lines.LineManager;
-import com.core.screens.gameplay.level.randomizer.LevelRandomizer;
+import com.core.screens.subscreen.play.level.core.btn.event.LevelEventListener;
+import com.core.screens.subscreen.play.level.core.btn.factory.LevelButtonFactory;
+import com.core.screens.subscreen.play.level.core.btn.group.ButtonPair;
+import com.core.screens.subscreen.play.level.core.lines.LineManager;
+import com.core.screens.subscreen.play.level.core.randomizer.LevelRandomizer;
 import com.main.Main;
 
 import java.util.ArrayList;
@@ -15,24 +16,43 @@ import java.util.LinkedList;
 
 public class Level {
     private final Main main;
-    private ArrayList<LevelPairButtons> levelObjects;
     private final LevelButtonFactory btnFactory;
-
-    private Sound currentPlayingSound;
-
     private final LineManager lineManager;
-
+    private final ArrayList<ButtonPair> levelObjects;
+    private Sound currentPlayingSound;
     private float levelBtnSize;
+    private final ArrayList<LevelEventListener> listeners;
 
     public Level(Main main) {
         this.main = main;
+        this.listeners = new ArrayList<>();
         this.levelObjects = new ArrayList<>();
         this.lineManager = new LineManager();
         calculateBtnSizes();
-        this.btnFactory = new LevelButtonFactory(this);
+        this.btnFactory = new LevelButtonFactory(main, this);
         this.btnFactory.setBtnHeight(levelBtnSize);
         this.btnFactory.setBtnWidth(levelBtnSize);
         this.currentPlayingSound = null;
+    }
+
+    public void addListener(LevelEventListener listener) {
+        this.listeners.add(listener);
+    }
+
+    public void removeListener(LevelEventListener listener) {
+        this.listeners.remove(listener);
+    }
+
+    public void notifyListener(String eventType) {
+        for (LevelEventListener listener : listeners) {
+            switch (eventType) {
+                case "LevelComplete":
+                    listener.onLevelComplete();
+                    break;
+                default:
+                    return;
+            }
+        }
     }
 
     public void addPair(String word, Texture wordImage, String audio) {
@@ -49,12 +69,8 @@ public class Level {
         return currentPlayingSound;
     }
 
-    public void setCurrentPlayingSound(Sound currentPlayingSound) {
-        this.currentPlayingSound = currentPlayingSound;
-    }
-
-    private LevelPairButtons createPairButtons(String word, Texture image, Sound audio) {
-        return new LevelPairButtons(
+    private ButtonPair createPairButtons(String word, Texture image, Sound audio) {
+        return new ButtonPair(
             btnFactory.createWordButton(word, audio),
             btnFactory.createImageButton(image, audio)
         );
@@ -64,15 +80,11 @@ public class Level {
         this.levelBtnSize = Gdx.graphics.getWidth() * 0.3f;
     }
 
-    public float getLevelBtnSize() {
-        return levelBtnSize;
-    }
-
     public LinkedList<Button> getShuffledButtons() {
         return LevelRandomizer.generateShuffledButtons(levelObjects);
     }
 
-    public ArrayList<LevelPairButtons> getLevelObjects() {
+    public ArrayList<ButtonPair> getLevelObjects() {
         return levelObjects;
     }
 

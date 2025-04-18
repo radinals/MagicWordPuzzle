@@ -1,21 +1,22 @@
-package com.game.assets;
+package com.core.data.assets.sprites;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.XmlReader;
-
-import java.util.HashMap;
+import com.core.data.assets.font.BitNumbersSprites;
 
 public class GameAssets {
 
-    public HashMap<String, TextureRegionDrawable> textures;
-    private BitNumbersSprites bitNumbers;
+    private final BitNumbersSprites bitNumbers;
+    public AssetManager assetManager;
 
-    public GameAssets() {
-        this.textures = new HashMap<>();
+    public GameAssets(String xmlFile) {
+        this.assetManager = new AssetManager();
         this.bitNumbers = new BitNumbersSprites();
+        loadConfig(xmlFile);
     }
 
     public BitNumbersSprites getBitNumbers() {
@@ -28,15 +29,17 @@ public class GameAssets {
 
         try {
             XmlReader.Element root = reader.parse(file);
-            for (XmlReader.Element category : root.getChildrenByName("asset")) {
+            for (XmlReader.Element category : root.getChildrenByName("texture")) {
                 String filename = category.getAttribute("file");
-                String alias = category.getAttribute("alias");
+                assetManager.load(filename, Texture.class);
+            }
 
-                this.textures.put(alias, new TextureRegionDrawable(new Texture(Gdx.files.internal(filename))));
+            for (XmlReader.Element audio : root.getChildrenByName("audio")) {
+                String filename = audio.getAttribute("file");
+                assetManager.load(filename, Sound.class);
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
             Gdx.app.exit();
         }
 
