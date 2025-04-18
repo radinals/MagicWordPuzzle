@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <category name="Animals" icon="test.png" levels="10">
+        <level id="1">
+            <card word="Lion" img=""/>
+            <card word="Eagle" img=""/>
+            <card word="Dog" img=""/>
+            <card word="Cow" img=""/>
+        </level>
+
+        <level id="2">
+            <card word="Whale" img=""/>
+            <card word="Peacock" img=""/>
+            <card word="Elephant" img=""/>
+            <card word="Bee" img=""/>
+        </level>
+
+        <level id="3">
+            <card word="Snake" img=""/>
+            <card word="Shark" img=""/>
+            <card word="Octopus" img=""/>
+            <card word="Ant" img=""/>
+        </level>
+
+        <level id="4">
+            <card word="Parrot" img=""/>
+            <card word="Lizard" img=""/>
+            <card word="Jellyfish" img=""/>
+            <card word="Goat" img=""/>
+        </level>
+
+        <level id="5">
+            <card word="Zebra" img=""/>
+            <card word="Turtle" img=""/>
+            <card word="Sheep" img=""/>
+            <card word="Horse" img=""/>
+        </level>
+    </category>
+
+    <category name="Fruits" icon="test.png" levels="5">
+        <level id="1">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="2">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="3">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="4">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="5">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+    </category>
+
+    <category name="Planets" icon="test.png" levels="5">
+        <level id="1">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="2">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="3">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="4">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="5">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+    </category>
+
+    <category name="Profession" icon="test.png" levels="5">
+        <level id="1">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="2">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="3">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="4">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="5">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+    </category>
+
+    <category name="School Supplies" icon="test.png" levels="5">
+        <level id="1">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="2">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="3">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="4">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="5">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+    </category>
+
+    <category name="Transportation" icon="test.png" levels="5" levelbtntint="#FF0000">
+        <level id="1">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="2">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="3">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="4">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+
+        <level id="5">
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+            <card word="" img=""/>
+        </level>
+    </category>
+
+
+</resources>

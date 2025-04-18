@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <category name="Animals" icon="test.png" levelconfig=""/>
-    <category name="Fruits" icon="test.png"/>
-    <category name="Planet" icon="test.png"/>
-    <category name="Profession" icon="test.png"/>
-    <category name="School Supplies" icon="test.png"/>
-    <category name="Transportation" icon="test.png"/>
-</resources>
