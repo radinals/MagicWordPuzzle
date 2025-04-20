@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Texture;
+import com.core.data.assets.sprites.GameAssets;
 import com.core.screens.mainscreen.core.ui.MainGameButtons;
 import com.core.screens.mainscreen.core.ui.OptionButtonRow;
 import com.core.screens.util.base.BaseScreen;
@@ -60,9 +61,6 @@ public class MainMenuScreen extends BaseScreen {
 
     @Override
     public void show() {
-
-        super.show();
-
         Gdx.input.setCatchKey(Input.Keys.BACK, true);
         InputMultiplexer multiplexer = new InputMultiplexer();
 
@@ -90,8 +88,18 @@ public class MainMenuScreen extends BaseScreen {
         super.render(delta);
         main.getBatch().begin();
         main.getBatch().draw(
-            main.getBaseAssets().assetManager.get("title.png", Texture.class),
+            GameAssets.getInstance().assetManager.get("title.png", Texture.class),
             titleX, titleY, titleWidth, titleHeight);
         main.getBatch().end();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+
+    }
+
+    @Override
+    public void hide() {
+
     }
 }

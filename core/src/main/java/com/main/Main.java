@@ -4,6 +4,7 @@ import com.android.AndroidActions;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.core.data.assets.sprites.GameAssets;
 import com.core.data.game.manager.GameConfig;
@@ -15,6 +16,7 @@ public class Main extends Game {
 
     private SpriteBatch batch;
 
+    private Music backgroundMusic;
 
     private AndroidActions androidActions;
 
@@ -24,11 +26,17 @@ public class Main extends Game {
 
     private final static float TRANSITION_DURATION = 0.55f;
 
-    public GameAssets gameAssets;
     public GameConfig gameConfig;
 
     public Main(AndroidActions androidActions) {
         this.androidActions = androidActions;
+    }
+
+    public void loadBackgroundMusic() {
+        this.backgroundMusic = GameAssets.getInstance().assetManager.get("audio/bgmusic.ogg", Music.class);
+        this.backgroundMusic.setVolume(0.25f);
+        this.backgroundMusic.setLooping(true);
+        this.backgroundMusic.play();
     }
 
     public void openVolumeSettings() {
@@ -47,10 +55,6 @@ public class Main extends Game {
         this.batch = new SpriteBatch();
         this.screenManager = new ScreenManager(this);
         this.setScreen(new LoadingScreen(this));
-    }
-
-    public GameAssets getBaseAssets() {
-        return gameAssets;
     }
 
     @Override

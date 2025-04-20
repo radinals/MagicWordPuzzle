@@ -50,6 +50,9 @@ public class SlideOutScreen implements Screen {
         this.oldScreen.pause();
         this.newScreen.pause();
 
+        newScreen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        newScreen.show();
+
 
     }
 

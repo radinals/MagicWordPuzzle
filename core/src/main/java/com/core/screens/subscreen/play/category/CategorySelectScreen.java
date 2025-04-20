@@ -8,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.core.custom.ButtonClickWithFx;
+import com.core.data.assets.sprites.GameAssets;
 import com.core.data.game.container.CategoryData;
 import com.core.screens.util.base.BaseSubScreen;
 import com.main.Main;
@@ -41,7 +43,9 @@ public class CategorySelectScreen extends BaseSubScreen {
         this.categoryColumnPadding = this.categoryButtonSize * 0.1f;
     }
 
-    private void addCategoryButton(Texture iconTexture, String levelname, int levelCount, Texture bgImage) {
+    private void addCategoryButton(String iconImageFile, String levelname, int levelCount, String bgImageFile) {
+
+        Texture iconTexture = GameAssets.getInstance().assetManager.get(iconImageFile, Texture.class);
 
         iconTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
@@ -58,22 +62,19 @@ public class CategorySelectScreen extends BaseSubScreen {
         ImageButton btn = new ImageButton(style);
         btn.setSize(this.categoryButtonSize, this.categoryButtonSize);
 
-        btn.addListener(new ClickListener() {
+        btn.addListener(new ButtonClickWithFx(ButtonClickWithFx.BtnSfxId.FX1) {
             @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+            public void touchDownAfterFx(InputEvent event, float x, float y, int pointer, int button) {
                 CategorySelectScreen.super.pause();
-                return pointer == 0;
             }
-
             @Override
-            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                if (pointer != 0) return;
+            public void firstTouchUp(InputEvent event, float x, float y, int pointer, int button) {
+
                 ImageButton btn = (ImageButton) event.getListenerActor();
                 if (!btn.isDisabled()) {
-                    main.screenManager.loadLevelSelectScreen(levelname, levelCount, bgImage);
+                    main.screenManager.loadLevelSelectScreen(levelname, levelCount, bgImageFile);
                     Gdx.graphics.requestRendering();
                 }
-                super.touchUp(event, x, y, pointer, button);
             }
         });
 
@@ -89,11 +90,23 @@ public class CategorySelectScreen extends BaseSubScreen {
     private void loadCategories() {
         int i = 0;
         for (CategoryData category : main.getGameConfig().getCategories().values()) {
-            addCategoryButton(category.getCategoryIcon(), category.getCategoryName(), category.getLevelCount(), category.getCategoryBackgroundImage());
+            addCategoryButton(
+                category.getCategoryIcon(), category.getCategoryName(),
+                category.getLevelCount(), category.getCategoryBackgroundImage()
+            );
             if (++i % 2 == 0)
                 table.row();
 
         }
     }
 
+    @Override
+    public void resize(int width, int height) {
+
+    }
+
+    @Override
+    public void hide() {
+
+    }
 }

@@ -14,13 +14,12 @@ public class LevelSelectScreen extends BaseSubScreen {
     private final Table levelButtons;
     private final Table rootTable;
     private final int levelCount;
-    private float btnPaddingH;
-    private float btnPaddingV;
+    private float btnPaddingH, btnPaddingV;
     private final CategoryButtonFactory buttonFactory;
 
-    public LevelSelectScreen(Main main, String levelCategoryName, int levelCount, Color levelIconColor, Texture bgImage) {
+    public LevelSelectScreen(Main main, String levelCategoryName, int levelCount, Color levelIconColor, String bgImageFile) {
         super(main);
-        super.bgImage = bgImage;
+        super.setBgImageFile(bgImageFile);
         this.buttonFactory = new CategoryButtonFactory(main, levelIconColor, levelCategoryName);
         this.levelCount = levelCount;
         this.levelButtons = new Table();
@@ -56,4 +55,13 @@ public class LevelSelectScreen extends BaseSubScreen {
         }
     }
 
+    @Override
+    public void resize(int width, int height) {
+
+    }
+
+    @Override
+    public void hide() {
+
+    }
 }

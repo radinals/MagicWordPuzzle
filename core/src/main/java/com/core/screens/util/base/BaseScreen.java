@@ -9,42 +9,34 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.core.data.assets.sprites.GameAssets;
 import com.main.Main;
 
-public class BaseScreen implements Screen {
+public abstract class BaseScreen implements Screen {
 
     protected Main main;
     protected Stage stage;
-
-    protected Texture bgImage;
+    private Texture bgImage;
 
     public BaseScreen(Main main) {
         this.main = main;
+        setBgImageFile("mainbg.png");
         ScreenViewport viewport = new ScreenViewport();
         viewport.setWorldSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         this.stage = new Stage(viewport);
-        this.bgImage = main.gameAssets.assetManager.get("mainbg.png", Texture.class);
-
     }
 
-    @Override
-    public void show() {
+    public void setBgImageFile(String bgImageFile) {
+        this.bgImage = GameAssets.getInstance().assetManager.get(bgImageFile, Texture.class);
     }
 
     @Override
     public void render(float delta) {
         main.getBatch().begin();
-        main.getBatch().draw(
-            bgImage, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()
-        );
+        main.getBatch().draw( bgImage, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         main.getBatch().end();
         stage.act(delta);
         stage.draw();
-
-    }
-
-    @Override
-    public void resize(int width, int height) {
 
     }
 
@@ -90,12 +82,8 @@ public class BaseScreen implements Screen {
         }
     }
 
-
-    @Override
-    public void hide() {
-    }
-
     @Override
     public void dispose() {
+        stage.dispose();
     }
 }

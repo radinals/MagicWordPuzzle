@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.core.data.assets.sprites.GameAssets;
 import com.core.screens.subscreen.play.levelselect.core.btn.LevelBtn;
 import com.core.screens.subscreen.play.levelselect.core.btn.event.ClickedEvent;
 import com.main.Main;
@@ -23,13 +24,13 @@ public class CategoryButtonFactory {
         this.clickEvent = new ClickedEvent(main, levelCategoryName);
         this.levelIconTint = levelIconColor;
 
-        TextureRegionDrawable tmp = new TextureRegionDrawable(main.getBaseAssets().assetManager.get("levelbtn.png", Texture.class));
+        TextureRegionDrawable tmp = new TextureRegionDrawable(GameAssets.getInstance().assetManager.get("levelbtn.png", Texture.class));
         this.btnIconTexture = tmp.tint(levelIconColor);
         this.btnIconTextureClicked = tmp.tint(Color.GRAY);
     }
 
     public void setBtnSize(float btnSize) {
-        TextureRegionDrawable tmp = new TextureRegionDrawable(main.getBaseAssets().assetManager.get("levelbtn.png", Texture.class));
+        TextureRegionDrawable tmp = new TextureRegionDrawable(GameAssets.getInstance().assetManager.get("levelbtn.png", Texture.class));
         tmp.setMinSize(btnSize, btnSize);
         this.btnIconTexture = tmp.tint(this.levelIconTint);
         this.btnIconTextureClicked = tmp.tint(Color.GRAY);
@@ -48,7 +49,7 @@ public class CategoryButtonFactory {
         }
 
         TextureRegionDrawable numberTexture = new TextureRegionDrawable(
-            main.getBaseAssets().getBitNumbers().getNumber(number)
+            GameAssets.getInstance().getBitNumbers().getNumber(number)
         );
 
         numberTexture.setMinSize(btnNumWidth, btnNumHeight);

@@ -46,4 +46,14 @@ public class LevelScreen extends BaseSubScreen {
         super.render(delta);
         lineManager.render();
     }
+
+    @Override
+    public void resize(int width, int height) {
+
+    }
+
+    @Override
+    public void hide() {
+
+    }
 }

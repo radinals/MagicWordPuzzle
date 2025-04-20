@@ -13,12 +13,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.core.custom.ButtonClickWithFx;
+import com.core.data.assets.sprites.GameAssets;
 import com.main.Main;
 
-public class BaseSubScreen extends BaseScreen {
+public abstract class BaseSubScreen extends BaseScreen {
     protected float backBtnSize;
     protected Label screenTitle;
-
     protected Table topRowTable;
 
     public BaseSubScreen(Main main) {
@@ -56,7 +57,7 @@ public class BaseSubScreen extends BaseScreen {
     }
 
     private void createBackButton() {
-        TextureRegionDrawable backButtonIcon = new TextureRegionDrawable(main.getBaseAssets().assetManager.get("backarrow.png", Texture.class));
+        TextureRegionDrawable backButtonIcon = new TextureRegionDrawable(GameAssets.getInstance().assetManager.get("backarrow.png", Texture.class));
         backButtonIcon.setMinSize(backBtnSize, backBtnSize);
 
         ImageButton.ImageButtonStyle style = new ImageButton.ImageButtonStyle();
@@ -68,21 +69,18 @@ public class BaseSubScreen extends BaseScreen {
 
         backButton.setSize(backBtnSize, backBtnSize);
 
-        backButton.addListener(new ClickListener() {
+        backButton.addListener(new ButtonClickWithFx(ButtonClickWithFx.BtnSfxId.FX2) {
             @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+            public void touchDownAfterFx(InputEvent event, float x, float y, int pointer, int button) {
                 pause();
-                return pointer == 0;
             }
 
             @Override
-            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                if (pointer != 0) return;
+            public void firstTouchUp(InputEvent event, float x, float y, int pointer, int button) {
                 ImageButton btn = (ImageButton) event.getListenerActor();
                 if (btn.isDisabled()) return;
                 main.screenManager.loadLastScreen();
                 Gdx.graphics.requestRendering();
-                super.touchUp(event, x, y, pointer, button);
             }
         });
 
@@ -91,8 +89,6 @@ public class BaseSubScreen extends BaseScreen {
 
     @Override
     public void show() {
-
-        super.show();
 
         Gdx.input.setCatchKey(Input.Keys.BACK, true);
 

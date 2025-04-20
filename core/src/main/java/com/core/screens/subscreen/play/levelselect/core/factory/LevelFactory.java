@@ -28,12 +28,12 @@ public class LevelFactory {
 
         LevelData levelData = categoryData.getLevels()[levelIdx];
 
-        Level level = new Level(main);
+        Level level = new Level();
 
         level.addListener(new LevelCompleteEvent(main, this, levelIdx));
 
         for (CardData card : levelData.getCards())
-            level.addPair(card.getWord(), card.getImg(), card.getAudio());
+            level.addPair(card.getWord(), card.getImgFile(), card.getAudio());
 
         return level;
     }

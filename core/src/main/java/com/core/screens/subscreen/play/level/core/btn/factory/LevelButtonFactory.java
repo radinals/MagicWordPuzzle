@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.core.data.assets.sprites.GameAssets;
 import com.core.screens.subscreen.play.level.core.Level;
 import com.core.screens.subscreen.play.level.core.btn.event.ClickedEvent;
 import com.core.screens.subscreen.play.level.core.btn.event.DragEvent;
@@ -15,16 +16,18 @@ import com.main.Main;
 
 public class LevelButtonFactory {
 
-    private final Main main;
     private final Level level;
     private float btnWidth;
     private float btnHeight;
+    private TextureRegionDrawable cardBackground;
 
-    public LevelButtonFactory(Main main, Level level) {
+    public LevelButtonFactory(Level level) {
         this.level = level;
         this.btnHeight = 0;
         this.btnWidth = 0;
-        this.main = main;
+        this.cardBackground = new TextureRegionDrawable(
+            GameAssets.getInstance().assetManager.get("cardbg.png", Texture.class)
+        );
     }
 
     public void setBtnHeight(float btnHeight) {
@@ -42,16 +45,14 @@ public class LevelButtonFactory {
         style.font.getData().setScale(2f); // unreliable for UI
         style.fontColor = Color.BLACK;
 
-        TextureRegionDrawable t = new TextureRegionDrawable(main.getBaseAssets().assetManager.get("cardbg.png", Texture.class));
-        t.setMinSize(btnWidth, btnHeight);
-        style.up = t;
-        style.down = t;
+        cardBackground.setMinSize(btnWidth, btnHeight);
+        style.up = style.down = cardBackground;
 
         TextButton btn = new TextButton(word, style);
 
         btn.setSize(btnWidth, btnHeight);
 
-        btn.addListener(new ClickedEvent(sound, level));
+        btn.addListener(new ClickedEvent(sound));
         btn.addListener(new DragEvent(level));
 
         return btn;
@@ -64,17 +65,19 @@ public class LevelButtonFactory {
         ImageButton btn = new ImageButton(style);
 
         TextureRegionDrawable t = new TextureRegionDrawable(image);
-        TextureRegionDrawable s = new TextureRegionDrawable(main.getBaseAssets().assetManager.get("cardbg.png", Texture.class));
 
-        t.setMinSize(btnWidth * 0.9f, btnHeight * 0.9f);
-        s.setMinSize(btnWidth, btnHeight);
+        final float imgArea = btnWidth * 0.9f;
+        final float imgScale = Math.min(imgArea/image.getWidth(), imgArea/image.getHeight());
+
+        t.setMinSize(image.getWidth() * imgScale, image.getHeight() * imgScale);
+        cardBackground.setMinSize(btnWidth, btnHeight);
 
         style.imageUp = t;
-        style.up = s;
+        style.up = cardBackground;
 
         btn.setSize(btnWidth, btnHeight);
 
-        btn.addListener(new ClickedEvent(sound, level));
+        btn.addListener(new ClickedEvent(sound));
         btn.addListener(new DragEvent(level));
 
         return btn;

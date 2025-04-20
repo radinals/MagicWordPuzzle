@@ -35,18 +35,19 @@ public class ScreenManager {
         if (screenHistory.isEmpty()) return;
         int sz = screenHistory.size();
         Screen lastScreen = screenHistory.pop();
-        main.setScreen(new SlideOutScreen(main, main.getScreen(), lastScreen, TRANSITION_DURATION, (lastScreen instanceof MainMenuScreen) || (sz > 1) ? SlideOutScreen.SlideDirection.RIGHT : SlideOutScreen.SlideDirection.LEFT));
-        lastScreen.dispose();
+        Screen currentScreen = main.getScreen();
+        main.setScreen(new SlideOutScreen(main, currentScreen, lastScreen, TRANSITION_DURATION, (lastScreen instanceof MainMenuScreen) || (sz > 1) ? SlideOutScreen.SlideDirection.RIGHT : SlideOutScreen.SlideDirection.LEFT));
+        currentScreen.dispose();
     }
 
     public void loadCategorySelectScreen() {
         switchScreens(new CategorySelectScreen(main), SlideOutScreen.SlideDirection.LEFT);
     }
 
-    public void loadLevelSelectScreen(String levelname, int levelCount, Texture bgImage) {
+    public void loadLevelSelectScreen(String levelname, int levelCount, String bgImageFile) {
         main.gameConfig.getCategories().values().forEach(category -> {
             if (category.getCategoryName().equals(levelname)) {
-                switchScreens(new LevelSelectScreen(main, levelname, levelCount, category.getLevelIconColor(), bgImage), SlideOutScreen.SlideDirection.LEFT);
+                switchScreens(new LevelSelectScreen(main, levelname, levelCount, category.getLevelIconColor(), bgImageFile), SlideOutScreen.SlideDirection.LEFT);
             }
         });
     }

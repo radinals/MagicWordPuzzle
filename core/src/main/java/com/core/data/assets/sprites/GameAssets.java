@@ -2,6 +2,7 @@ package com.core.data.assets.sprites;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
@@ -13,10 +14,22 @@ public class GameAssets {
     private final BitNumbersSprites bitNumbers;
     public AssetManager assetManager;
 
-    public GameAssets(String xmlFile) {
+    private static GameAssets singleton = null;
+
+    private GameAssets() {
         this.assetManager = new AssetManager();
         this.bitNumbers = new BitNumbersSprites();
-        loadConfig(xmlFile);
+        loadConfig("data/assetConfig.xml");
+    }
+
+    public static boolean loadAssets() {
+        if (singleton == null)
+            singleton = new GameAssets();
+        return singleton.assetManager.update();
+    }
+
+    public static GameAssets getInstance() {
+        return singleton;
     }
 
     public BitNumbersSprites getBitNumbers() {
@@ -37,6 +50,11 @@ public class GameAssets {
             for (XmlReader.Element audio : root.getChildrenByName("audio")) {
                 String filename = audio.getAttribute("file");
                 assetManager.load(filename, Sound.class);
+            }
+
+            for (XmlReader.Element audio : root.getChildrenByName("music")) {
+                String filename = audio.getAttribute("file");
+                assetManager.load(filename, Music.class);
             }
 
         } catch (Exception e) {

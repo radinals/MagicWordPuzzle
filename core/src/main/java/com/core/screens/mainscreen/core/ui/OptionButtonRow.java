@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.core.data.assets.sprites.GameAssets;
 import com.core.screens.mainscreen.core.btn.event.optionbtn.GooglePlayBtnEvent;
 import com.core.screens.mainscreen.core.btn.event.optionbtn.RateBtnEvent;
 import com.core.screens.mainscreen.core.btn.event.optionbtn.ShareBtnEvent;
@@ -32,7 +33,7 @@ public class OptionButtonRow extends Table {
 
     private void createButton(String iconFile, ClickListener eventHandler) {
         TextureRegionDrawable icon = new TextureRegionDrawable(
-            main.getBaseAssets().assetManager.get(iconFile, Texture.class)
+            GameAssets.getInstance().assetManager.get(iconFile, Texture.class)
         );
         icon.setMinSize(btnSize, btnSize);
 

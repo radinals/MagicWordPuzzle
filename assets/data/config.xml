@@ -1,46 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <category name="Animals" icon="category/animals.png" levels="300" LevelIconColor="#f7ae2d" categorybg="category/bg/bg_animals.png">
-        <card word="lion" img="test.png" audio="audio/animals/lion.wav" group="0"/>
-        <card word="tiger" img="test.png" audio="audio/animals/tiger.wav" group="0"/>
-        <card word="bear" img="test.png" audio="audio/animals/bear.wav" group="0"/>
-        <card word="elephant" img="test.png" audio="audio/animals/elephant.wav" group="0"/>
-        <card word="giraffe" img="test.png" audio="audio/animals/giraffe.wav" group="0"/>
-        <card word="zebra" img="test.png" audio="audio/animals/zebra.wav" group="1"/>
-        <card word="kangaroo" img="test.png" audio="audio/animals/kangaroo.wav" group="1"/>
-        <card word="koala" img="test.png" audio="audio/animals/koala.wav" group="1"/>
-        <card word="monkey" img="test.png" audio="audio/animals/monkey.wav" group="1"/>
-        <card word="panda" img="test.png" audio="audio/animals/panda.wav" group="1"/>
-        <card word="wolf" img="test.png" audio="audio/animals/wolf.wav" group="2"/>
-        <card word="fox" img="test.png" audio="audio/animals/fox.wav" group="2"/>
-        <card word="deer" img="test.png" audio="audio/animals/deer.wav" group="2"/>
-        <card word="rabbit" img="test.png" audio="audio/animals/rabbit.wav" group="2"/>
-        <card word="squirrel" img="test.png" audio="audio/animals/squirrel.wav" group="2"/>
-        <card word="camel" img="test.png" audio="audio/animals/camel.wav" group="3"/>
-        <card word="hippopotamus" img="test.png" audio="audio/animals/hippopotamus.wav" group="3"/>
-        <card word="rhinoceros" img="test.png" audio="audio/animals/rhinoceros.wav" group="3"/>
-        <card word="leopard" img="test.png" audio="audio/animals/leopard.wav" group="3"/>
-        <card word="cheetah" img="test.png" audio="audio/animals/cheetah.wav" group="3"/>
-        <card word="whale" img="test.png" audio="audio/animals/whale.wav" group="4"/>
-        <card word="dolphin" img="test.png" audio="audio/animals/dolphin.wav" group="4"/>
-        <card word="shark" img="test.png" audio="audio/animals/shark.wav" group="4"/>
-        <card word="octopus" img="test.png" audio="audio/animals/octopus.wav" group="4"/>
-        <card word="eagle" img="test.png" audio="audio/animals/eagle.wav" group="4"/>
-        <card word="hawk" img="test.png" audio="audio/animals/hawk.wav" group="5"/>
-        <card word="owl" img="test.png" audio="audio/animals/owl.wav" group="5"/>
-        <card word="penguin" img="test.png" audio="audio/animals/penguin.wav" group="5"/>
-        <card word="seal" img="test.png" audio="audio/animals/seal.wav" group="5"/>
-        <card word="alligator" img="test.png" audio="audio/animals/alligator.wav" group="5"/>
+    <category name="Animals" icon="category/animals.png" levels="20" LevelIconColor="#fcbb5a" categorybg="category/bg/bg_animals.png">
+        <card word="ant"       img="icon/animals/ant.png" audio="audio/animals/ant.wav" group="0"/>
+        <card word="bee"       img="icon/animals/bee.png" audio="audio/animals/bee.wav" group="0"/>
+        <card word="cow"       img="icon/animals/cow.png" audio="audio/animals/cow.wav" group="0"/>
+        <card word="dog"       img="icon/animals/dog.png" audio="audio/animals/dog.wav" group="0"/>
+        <card word="eagle"     img="icon/animals/eagle.png" audio="audio/animals/eagle.wav" group="1"/>
+        <card word="elephant"  img="icon/animals/elephant.png" audio="audio/animals/elephant.wav" group="1"/>
+        <card word="goat"      img="icon/animals/goat.png" audio="audio/animals/goat.wav" group="1"/>
+        <card word="horse"     img="icon/animals/horse.png" audio="audio/animals/horse.wav" group="1"/>
+        <card word="jellyfish" img="icon/animals/jellyfish.png" audio="audio/animals/jellyfish.wav" group="2"/>
+        <card word="lion"      img="icon/animals/lion.png" audio="audio/animals/lion.wav" group="2"/>
+        <card word="lizard"    img="icon/animals/lizard.png" audio="audio/animals/lizard.wav" group="2"/>
+        <card word="octopus"   img="icon/animals/octopus.png" audio="audio/animals/octopus.wav" group="2"/>
+        <card word="parrot"    img="icon/animals/parrot.png" audio="audio/animals/parrot.wav" group="3"/>
+        <card word="peacock"   img="icon/animals/peacock.png" audio="audio/animals/peacock.wav" group="3"/>
+        <card word="shark"     img="icon/animals/shark.png" audio="audio/animals/shark.wav" group="3"/>
+        <card word="sheep"     img="icon/animals/sheep.png" audio="audio/animals/sheep.wav" group="3"/>
+        <card word="snake"     img="icon/animals/snake.png" audio="audio/animals/snake.wav" group="4"/>
+        <card word="turtle"    img="icon/animals/turtle.png" audio="audio/animals/turtle.wav" group="4"/>
+        <card word="whale"     img="icon/animals/whale.png" audio="audio/animals/whale.wav" group="4"/>
+        <card word="zebra"     img="icon/animals/zebra.png" audio="audio/animals/zebra.wav" group="4"/>
     </category>
-    <category name="B" icon="category/fruits.png" levels="300" categorybg="category/bg/bg_fruits.png">
+
+    <category name="Fruits" icon="category/fruits.png" levels="20" LevelIconColor="#4fcb1b" categorybg="category/bg/bg_fruits.png">
+        <card word="apple" img="icon/fruits/apple.png" audio="audio/fruits/apple.wav" group="0"/>
+        <card word="avocado" img="icon/fruits/avocado.png" audio="audio/fruits/avocado.wav" group="0"/>
+        <card word="banana" img="icon/fruits/banana.png" audio="audio/fruits/banana.wav" group="0"/>
+        <card word="coconut" img="icon/fruits/coconut.png" audio="audio/fruits/coconut.wav" group="0"/>
+        <card word="dragonfruit" img="icon/fruits/dragonfruit.png" audio="audio/fruits/dragonfruit.wav" group="1"/>
+        <card word="durian" img="icon/fruits/durian.png" audio="audio/fruits/durian.wav" group="1"/>
+        <card word="grape" img="icon/fruits/grape.png" audio="audio/fruits/grape.wav" group="1"/>
+        <card word="kiwi" img="icon/fruits/kiwi.png" audio="audio/fruits/kiwi.wav" group="1"/>
+        <card word="lychee" img="icon/fruits/lychee.png" audio="audio/fruits/lychee.wav" group="2"/>
+        <card word="mango" img="icon/fruits/mango.png" audio="audio/fruits/mango.wav" group="2"/>
+        <card word="orange" img="icon/fruits/orange.png" audio="audio/fruits/orange.wav" group="2"/>
+        <card word="papaya" img="icon/fruits/papaya.png" audio="audio/fruits/papaya.wav" group="2"/>
+        <card word="pear" img="icon/fruits/pear.png" audio="audio/fruits/pear.wav" group="3"/>
+        <card word="pineapple" img="icon/fruits/pineapple.png" audio="audio/fruits/pineapple.wav" group="3"/>
+        <card word="rambutan" img="icon/fruits/rambutan.png" audio="audio/fruits/rambutan.wav" group="3"/>
+        <card word="sapodilla" img="icon/fruits/sapodilla.png" audio="audio/fruits/sapodilla.wav" group="3"/>
+        <card word="snake fruit" img="icon/fruits/snakefruit.png" audio="audio/fruits/snakefruit.wav" group="4"/>
+        <card word="starfruit" img="icon/fruits/starfruit.png" audio="audio/fruits/starfruit.wav" group="4"/>
+        <card word="strawberry" img="icon/fruits/strawberry.png" audio="audio/fruits/strawberry.wav" group="4"/>
+        <card word="watermelon" img="icon/fruits/watermelon.png" audio="audio/fruits/watermelon.wav" group="4"/>
     </category>
-    <category name="C" icon="category/planet.png" levels="300" categorybg="category/bg/bg_planet.png">
+
+    <category name="Planets" icon="category/planet.png" levels="20" LevelIconColor="#8c52ff" categorybg="category/bg/bg_planet.png">
+        <card word="earth" img="icon/planets/earth.png" audio="audio/planets/earth.wav" group="0"/>
+        <card word="jupiter" img="icon/planets/jupiter.png" audio="audio/planets/jupiter.wav" group="0"/>
+        <card word="mars" img="icon/planets/mars.png" audio="audio/planets/mars.wav" group="0"/>
+        <card word="mercury" img="icon/planets/mercury.png" audio="audio/planets/mercury.wav" group="0"/>
+        <card word="neptune" img="icon/planets/neptune.png" audio="audio/planets/neptune.wav" group="1"/>
+        <card word="saturn" img="icon/planets/saturn.png" audio="audio/planets/saturn.wav" group="1"/>
+        <card word="uranus" img="icon/planets/uranus.png" audio="audio/planets/uranus.wav" group="1"/>
+        <card word="venus" img="icon/planets/venus.png" audio="audio/planets/venus.wav" group="1"/>
     </category>
-    <category name="D" icon="category/professions.png" levels="300" categorybg="category/bg/bg_profession.png">
+
+    <category name="Professions" icon="category/professions.png" levels="20" LevelIconColor="#d89f19" categorybg="category/bg/bg_profession.png">
+        <card word="architect" img="icon/professions/architect.png" audio="audio/professions/architect.wav" group="0"/>
+        <card word="artist" img="icon/professions/artist.png" audio="audio/professions/artist.wav" group="0"/>
+        <card word="cashier" img="icon/professions/cashier.png" audio="audio/professions/cashier.wav" group="0"/>
+        <card word="chef" img="icon/professions/chef.png" audio="audio/professions/chef.wav" group="0"/>
+        <card word="doctor" img="icon/professions/docter.png" audio="audio/professions/doctor.wav" group="1"/>
+        <card word="driver" img="icon/professions/driver.png" audio="audio/professions/driver.wav" group="1"/>
+        <card word="engineer" img="icon/professions/engeneer.png" audio="audio/professions/engineer.wav" group="1"/>
+        <card word="farmer" img="icon/professions/farmer.png" audio="audio/professions/farmer.wav" group="1"/>
+        <card word="firefighter" img="icon/professions/firefighter.png" audio="audio/professions/firefighter.wav" group="2"/>
+        <card word="journalist" img="icon/professions/jurnalist.png" audio="audio/professions/journalist.wav" group="2"/>
+        <card word="mechanic" img="icon/professions/mechanic.png" audio="audio/professions/mechanic.wav" group="2"/>
+        <card word="nurse" img="icon/professions/nurse.png" audio="audio/professions/nurse.wav" group="2"/>
+        <card word="photographer" img="icon/professions/photographer.png" audio="audio/professions/photographer.wav" group="3"/>
+        <card word="pilot" img="icon/professions/pilot.png" audio="audio/professions/pilot.wav" group="3"/>
+        <card word="police" img="icon/professions/police.png" audio="audio/professions/police.wav" group="3"/>
+        <card word="teacher" img="icon/professions/teacher.png" audio="audio/professions/teacher.wav" group="3"/>
     </category>
-    <category name="E" icon="category/schoolsupplies.png" levels="300" categorybg="category/bg/bg_school.png">
+
+    <category name="School Supplies" icon="category/schoolsupplies.png" levels="20" categorybg="category/bg/bg_school.png">
+        <card word="bag" img="icon/schoolsupplies/bag.png" audio="audio/fxpop1.wav" group="0"/>
+        <card word="book" img="icon/schoolsupplies/book.png" audio="audio/fxpop1.wav" group="0"/>
+        <card word="calculator" img="icon/schoolsupplies/calculator.png" audio="audio/fxpop1.wav" group="0"/>
+        <card word="colored pencil" img="icon/schoolsupplies/coloredpencil.png" audio="audio/fxpop1.wav" group="0"/>
+        <card word="crayons" img="icon/schoolsupplies/crayons.png" audio="audio/fxpop1.wav" group="1"/>
+        <card word="eraser" img="icon/schoolsupplies/eraser.png" audio="audio/fxpop1.wav" group="1"/>
+        <card word="glue" img="icon/schoolsupplies/glue.png" audio="audio/fxpop1.wav" group="1"/>
+        <card word="highlighter" img="icon/schoolsupplies/highlighter.png" audio="audio/fxpop1.wav" group="1"/>
+        <card word="lunchbox" img="icon/schoolsupplies/luchbox.png" audio="audio/fxpop1.wav" group="2"/>
+        <card word="marker" img="icon/schoolsupplies/marker.png" audio="audio/fxpop1.wav" group="2"/>
+        <card word="mechanical pencil" img="icon/schoolsupplies/mechanical pencil.png" audio="audio/fxpop1.wav" group="2"/>
+        <card word="pen" img="icon/schoolsupplies/pen.png" audio="audio/fxpop1.wav" group="2"/>
+        <card word="pencil" img="icon/schoolsupplies/pencil.png" audio="audio/fxpop1.wav" group="3"/>
+        <card word="pencil sharpener" img="icon/schoolsupplies/pencilsharpener.png" audio="audio/fxpop1.wav" group="3"/>
+        <card word="protractor" img="icon/schoolsupplies/protractor.png" audio="audio/fxpop1.wav" group="3"/>
+        <card word="ruler" img="icon/schoolsupplies/ruler.png" audio="audio/fxpop1.wav" group="3"/>
+        <card word="scissors" img="icon/schoolsupplies/scissors.png" audio="audio/fxpop1.wav" group="4"/>
+        <card word="umbrella" img="icon/schoolsupplies/umbrella.png" audio="audio/fxpop1.wav" group="4"/>
+        <card word="waterbottle" img="icon/schoolsupplies/waterbottle.png" audio="audio/fxpop1.wav" group="4"/>
+        <card word="watercolor paints" img="icon/schoolsupplies/watercolorpaints.png" audio="audio/fxpop1.wav" group="4"/>
     </category>
-    <category name="F" icon="category/transport.png" levels="300" categorybg="category/bg/bg_transport.png">
+
+    <category name="F" icon="category/transport.png" levels="20" categorybg="category/bg/bg_transport.png">
     </category>
 
 

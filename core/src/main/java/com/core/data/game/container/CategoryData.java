@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class CategoryData {
     private final String categoryName;
-    private final Texture categoryIcon;
+    private final String categoryIconFile;
     private final LevelData[] levels;
-    private final Texture categoryBackgroundImage;
+    private final String categoryBackgroundImage;
     private Color levelIconColor;
     private int levelCount;
 
@@ -18,12 +18,12 @@ public class CategoryData {
         this.levelCount = 0;
         this.levels = new LevelData[levelCount];
         for (int i = 0; i < levelCount; this.levels[i++] = null) ;
-        this.categoryIcon = new Texture(Gdx.files.internal(categoryIcon));
-        this.categoryBackgroundImage = new Texture(Gdx.files.internal(categoryBgFile));
+        this.categoryIconFile = categoryIcon;
+        this.categoryBackgroundImage = categoryBgFile;
         this.levelIconColor = null;
     }
 
-    public Texture getCategoryBackgroundImage() {
+    public String getCategoryBackgroundImage() {
         return categoryBackgroundImage;
     }
 
@@ -35,8 +35,8 @@ public class CategoryData {
         this.levelIconColor = color;
     }
 
-    public Texture getCategoryIcon() {
-        return categoryIcon;
+    public String getCategoryIcon() {
+        return categoryIconFile;
     }
 
     public String getCategoryName() {

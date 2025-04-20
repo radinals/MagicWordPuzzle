@@ -19,7 +19,10 @@ public class LevelCompleteEvent implements LevelEventListener {
 
     private void loadNextLevel() {
         if (levelFactory.isValidLevelIdx(++levelIdx)) {
-            main.screenManager.switchScreensDirectly(new LevelScreen(main, levelFactory.createLevel(levelIdx)), SlideOutScreen.SlideDirection.LEFT);
+            main.screenManager.switchScreensDirectly(
+                new LevelScreen(main, levelFactory.createLevel(levelIdx)),
+                SlideOutScreen.SlideDirection.LEFT
+            );
         } else {
             main.screenManager.loadMainMenuScreen();
         }

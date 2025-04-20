@@ -68,8 +68,8 @@ public class LearningScreen extends BaseSubScreen {
         loadCards();
     }
 
-    private void addCard(Texture icon, String word) {
-        table.add(createImg(icon));
+    private void addCard(String imgFile, String word) {
+        table.add(createImg(imgFile));
         table.row();
         table.add(createLabel(word));
 
@@ -99,11 +99,11 @@ public class LearningScreen extends BaseSubScreen {
         return label;
     }
 
-    private Image createImg(Texture icon) {
+    private Image createImg(String imgFile) {
+        Texture texture = new Texture(Gdx.files.internal(imgFile));
+        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
-        icon.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-
-        TextureRegionDrawable drawable = new TextureRegionDrawable(icon);
+        TextureRegionDrawable drawable = new TextureRegionDrawable(texture);
         drawable.setMinSize(this.btnWidth, this.btnHeight);
 
         return new Image(drawable);
@@ -112,6 +112,16 @@ public class LearningScreen extends BaseSubScreen {
     // IDEA: TODO:  OVERRIDING SINGLE BUTTON REPEATEDLY OR LOADING AT PRESS
     private void loadCards() {
         CardData card = main.getGameConfig().getCards().get(idx);
-        addCard(card.getImg(), card.getWord());
+        addCard(card.getImgFile(), card.getWord());
+    }
+
+    @Override
+    public void resize(int width, int height) {
+
+    }
+
+    @Override
+    public void hide() {
+
     }
 }

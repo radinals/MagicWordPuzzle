@@ -99,6 +99,10 @@ public class LineManager {
         return this;
     }
 
+    public Line getActiveLine() {
+        return activeLine;
+    }
+
     public enum LineType {
         IncorrectLine,
         CorrectLine,
