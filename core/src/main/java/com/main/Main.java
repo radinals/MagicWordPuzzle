@@ -11,25 +11,24 @@ import com.core.data.game.manager.GameConfig;
 import com.core.screens.util.loading.LoadingScreen;
 import com.core.screens.util.manager.ScreenManager;
 
-/** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
+/**
+ * {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms.
+ */
 public class Main extends Game {
 
-    private SpriteBatch batch;
-
-    private Music backgroundMusic;
-
-    private AndroidActions androidActions;
-
-    public SpriteBatch getBatch() {
-        return batch;
-    }
-
     private final static float TRANSITION_DURATION = 0.55f;
-
     public GameConfig gameConfig;
+    public ScreenManager screenManager;
+    private SpriteBatch batch;
+    private Music backgroundMusic;
+    private AndroidActions androidActions;
 
     public Main(AndroidActions androidActions) {
         this.androidActions = androidActions;
+    }
+
+    public SpriteBatch getBatch() {
+        return batch;
     }
 
     public void loadBackgroundMusic() {
@@ -46,8 +45,6 @@ public class Main extends Game {
     public GameConfig getGameConfig() {
         return gameConfig;
     }
-
-    public ScreenManager screenManager;
 
     @Override
     public void create() {

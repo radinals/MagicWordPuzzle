@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
@@ -28,6 +27,20 @@ public class DragEvent extends DragListener {
         this.level = level;
     }
 
+    private static boolean lineConnectsTwoPair(ButtonPair pair, Line line) {
+        Vector2 lineStart = line.first;
+        Vector2 lineEnd = line.second;
+
+        return (pointInButtonArea(pair.wordButton, lineStart.x, lineStart.y) &&
+            pointInButtonArea(pair.imgButton, lineEnd.x, lineEnd.y)) || (pointInButtonArea(pair.imgButton, lineStart.x, lineStart.y) &&
+            pointInButtonArea(pair.wordButton, lineEnd.x, lineEnd.y));
+    }
+
+    private static boolean pointInButtonArea(Button btn, float x, float y) {
+        Vector2 local = btn.stageToLocalCoordinates(new Vector2(x, y));
+        return (btn.hit(local.x, local.y, true) != null);
+    }
+
     @Override
     public void dragStart(InputEvent event, float x, float y, int pointer) {
         if (pointer != 0) return;
@@ -44,7 +57,7 @@ public class DragEvent extends DragListener {
                 pointInButtonArea(btn, event.getStageX(), event.getStageY())) {
                 this.dragStartPair = pair;
                 this.level.getLineManager().setActiveLineStart(event.getStageX(), event.getStageY());
-                if(this.level.getLineManager().isActiveLineFormed())
+                if (this.level.getLineManager().isActiveLineFormed())
                     Gdx.graphics.requestRendering();
                 return;
             }
@@ -79,7 +92,8 @@ public class DragEvent extends DragListener {
         if (!this.level.getLineManager().isActiveLineFormed()) {
             this.level.getLineManager().resetActiveLine();
             return;
-        };
+        }
+        ;
 
         boolean alignedCorrectly = false;
         boolean found = false;
@@ -88,10 +102,10 @@ public class DragEvent extends DragListener {
 
         for (ButtonPair pair : level.getLevelObjects()) {
             if (dragSource instanceof ImageButton &&
-               lineConnectsTwoPair(new ButtonPair(pair.wordButton, dragStartPair.imgButton), level.getLineManager().getActiveLine()) &&
-               !linedButtons.contains(pair.wordButton) && !linedButtons.contains(dragSource))
-            {
-                linedButtons.add(pair.wordButton); linedButtons.add(dragSource);
+                lineConnectsTwoPair(new ButtonPair(pair.wordButton, dragStartPair.imgButton), level.getLineManager().getActiveLine()) &&
+                !linedButtons.contains(pair.wordButton) && !linedButtons.contains(dragSource)) {
+                linedButtons.add(pair.wordButton);
+                linedButtons.add(dragSource);
                 alignedCorrectly = (pair.equals(dragStartPair));
                 dragEnd = pair.wordButton;
                 found = true;
@@ -99,9 +113,9 @@ public class DragEvent extends DragListener {
 
             } else if (dragSource instanceof TextButton &&
                 lineConnectsTwoPair(new ButtonPair(dragStartPair.wordButton, pair.imgButton), level.getLineManager().getActiveLine()) &&
-                !linedButtons.contains(pair.imgButton) && !linedButtons.contains(dragSource))
-            {
-                linedButtons.add(pair.imgButton); linedButtons.add(dragSource);
+                !linedButtons.contains(pair.imgButton) && !linedButtons.contains(dragSource)) {
+                linedButtons.add(pair.imgButton);
+                linedButtons.add(dragSource);
                 alignedCorrectly = (pair.equals(dragStartPair));
                 dragEnd = pair.imgButton;
                 found = true;
@@ -111,7 +125,7 @@ public class DragEvent extends DragListener {
 
         if (found) {
             LineManager.LineType linetype;
-            if(alignedCorrectly) {
+            if (alignedCorrectly) {
                 linetype = LineManager.LineType.CorrectLine;
                 TextureRegionDrawable tr_end = (TextureRegionDrawable) dragEnd.getStyle().up;
                 TextureRegionDrawable tr_start = (TextureRegionDrawable) dragSource.getStyle().up;
@@ -148,20 +162,5 @@ public class DragEvent extends DragListener {
 
         Gdx.graphics.requestRendering();
 
-    }
-
-
-    private static boolean lineConnectsTwoPair(ButtonPair pair, Line line) {
-        Vector2 lineStart = line.first;
-        Vector2 lineEnd = line.second;
-
-        return (pointInButtonArea(pair.wordButton, lineStart.x, lineStart.y) &&
-            pointInButtonArea(pair.imgButton, lineEnd.x, lineEnd.y)) || (pointInButtonArea(pair.imgButton, lineStart.x, lineStart.y) &&
-            pointInButtonArea(pair.wordButton, lineEnd.x, lineEnd.y));
-    }
-
-    private static boolean pointInButtonArea(Button btn, float x, float y) {
-        Vector2 local = btn.stageToLocalCoordinates(new Vector2(x, y));
-        return (btn.hit(local.x, local.y, true) != null);
     }
 }

@@ -33,7 +33,7 @@ public abstract class BaseScreen implements Screen {
     @Override
     public void render(float delta) {
         main.getBatch().begin();
-        main.getBatch().draw( bgImage, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        main.getBatch().draw(bgImage, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         main.getBatch().end();
         stage.act(delta);
         stage.draw();

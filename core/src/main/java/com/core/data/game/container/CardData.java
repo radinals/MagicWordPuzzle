@@ -1,8 +1,5 @@
 package com.core.data.game.container;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
-
 public class CardData {
     private final String word;
     private final String imgFile;

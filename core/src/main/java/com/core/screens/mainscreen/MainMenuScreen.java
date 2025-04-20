@@ -37,8 +37,8 @@ public class MainMenuScreen extends BaseScreen {
         mainGameButtons.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight() * 0.5f);
         optionButtonRow.setSize(Gdx.graphics.getWidth(), extraButtonSize);
 
-        mainGameButtons.setPosition((float)Gdx.graphics.getWidth() / 2 - mainGameButtons.getWidth() / 2, titleY - titleHeight);
-        optionButtonRow.setPosition((float)Gdx.graphics.getWidth() / 2 - optionButtonRow.getWidth() / 2, Gdx.graphics.getHeight() * 0.25f);
+        mainGameButtons.setPosition((float) Gdx.graphics.getWidth() / 2 - mainGameButtons.getWidth() / 2, titleY - titleHeight);
+        optionButtonRow.setPosition((float) Gdx.graphics.getWidth() / 2 - optionButtonRow.getWidth() / 2, Gdx.graphics.getHeight() * 0.25f);
 
         this.stage.addActor(mainGameButtons);
         this.stage.addActor(optionButtonRow);

@@ -11,10 +11,9 @@ import com.core.data.assets.font.BitNumbersSprites;
 
 public class GameAssets {
 
+    private static GameAssets singleton = null;
     private final BitNumbersSprites bitNumbers;
     public AssetManager assetManager;
-
-    private static GameAssets singleton = null;
 
     private GameAssets() {
         this.assetManager = new AssetManager();

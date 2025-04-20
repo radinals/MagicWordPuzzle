@@ -1,7 +1,6 @@
 package com.core.screens.subscreen.play.levelselect.core.btn.event;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.core.custom.ButtonClickWithFx;
 import com.core.screens.subscreen.play.level.LevelScreen;
 import com.core.screens.subscreen.play.levelselect.core.btn.LevelBtn;

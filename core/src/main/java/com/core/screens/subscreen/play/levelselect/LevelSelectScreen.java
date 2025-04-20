@@ -2,7 +2,6 @@ package com.core.screens.subscreen.play.levelselect;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.core.screens.subscreen.play.levelselect.core.factory.CategoryButtonFactory;
@@ -14,8 +13,8 @@ public class LevelSelectScreen extends BaseSubScreen {
     private final Table levelButtons;
     private final Table rootTable;
     private final int levelCount;
-    private float btnPaddingH, btnPaddingV;
     private final CategoryButtonFactory buttonFactory;
+    private float btnPaddingH, btnPaddingV;
 
     public LevelSelectScreen(Main main, String levelCategoryName, int levelCount, Color levelIconColor, String bgImageFile) {
         super(main);
@@ -38,7 +37,7 @@ public class LevelSelectScreen extends BaseSubScreen {
         this.rootTable.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight() * 0.6f);
         this.levelButtons.setSize(Gdx.graphics.getWidth() * 0.9f, Gdx.graphics.getHeight() * 0.6f);
         this.rootTable.setPosition(
-            (float)Gdx.graphics.getWidth() / 2 - rootTable.getWidth() / 2,
+            (float) Gdx.graphics.getWidth() / 2 - rootTable.getWidth() / 2,
             Gdx.graphics.getHeight() * 0.2f
         );
         this.btnPaddingH = Gdx.graphics.getWidth() * 0.05f;

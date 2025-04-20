@@ -14,10 +14,10 @@ public class CategoryButtonFactory {
 
     private final Main main;
     private final Color levelIconTint;
+    private final ClickedEvent clickEvent;
     private float btnSize;
     private Drawable btnIconTexture;
     private Drawable btnIconTextureClicked;
-    private final ClickedEvent clickEvent;
 
     public CategoryButtonFactory(Main main, Color levelIconColor, String levelCategoryName) {
         this.main = main;

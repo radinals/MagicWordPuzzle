@@ -8,8 +8,8 @@ import com.main.Main;
 public class LevelCompleteEvent implements LevelEventListener {
 
     private final Main main;
-    private int levelIdx;
     private final LevelFactory levelFactory;
+    private int levelIdx;
 
     public LevelCompleteEvent(Main main, LevelFactory levelFactory, int currentLevelIdx) {
         this.levelIdx = currentLevelIdx;

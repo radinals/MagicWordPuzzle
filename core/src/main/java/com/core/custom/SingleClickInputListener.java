@@ -8,11 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 public abstract class SingleClickInputListener extends ClickListener {
     @Override
     final public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-        if (pointer == 0 && pointInButtonArea((Button)event.getListenerActor(), event.getStageX(), event.getStageY())) {
+        if (pointer == 0 && pointInButtonArea((Button) event.getListenerActor(), event.getStageX(), event.getStageY())) {
             firstTouchDown(event, x, y, pointer, button);
         }
         return pointer == 0;
     }
+
     @Override
     final public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
         if (pointer != 0) return;

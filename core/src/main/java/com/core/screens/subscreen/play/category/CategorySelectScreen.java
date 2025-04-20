@@ -6,7 +6,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.core.custom.ButtonClickWithFx;
 import com.core.data.assets.sprites.GameAssets;
@@ -26,8 +25,8 @@ public class CategorySelectScreen extends BaseSubScreen {
         this.table = new Table();
         this.table.setDebug(true);
         this.table.setPosition(
-            (float)Gdx.graphics.getWidth() / 2 - table.getWidth() / 2,
-            (float)Gdx.graphics.getHeight() / 2 - table.getHeight() / 2
+            (float) Gdx.graphics.getWidth() / 2 - table.getWidth() / 2,
+            (float) Gdx.graphics.getHeight() / 2 - table.getHeight() / 2
         );
 
         calculateSizes();
@@ -67,6 +66,7 @@ public class CategorySelectScreen extends BaseSubScreen {
             public void touchDownAfterFx(InputEvent event, float x, float y, int pointer, int button) {
                 CategorySelectScreen.super.pause();
             }
+
             @Override
             public void firstTouchUp(InputEvent event, float x, float y, int pointer, int button) {
 

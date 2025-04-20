@@ -25,7 +25,7 @@ public class LoadingScreen implements Screen {
         this.main = main;
         this.loadingFinished = false;
         this.background = new Texture(Gdx.files.internal("loading.png"));
-        this.loadingText = new SpriteAnimation("loadingtext.png",  4, 0.1f);
+        this.loadingText = new SpriteAnimation("loadingtext.png", 4, 0.1f);
     }
 
     @Override
@@ -38,8 +38,8 @@ public class LoadingScreen implements Screen {
         TextureRegion frame = loadingText.getFrame(delta, true);
         float frameH = Gdx.graphics.getHeight() * 0.05f;
         float frameW = Gdx.graphics.getWidth() * 0.6f;
-        float centerX = (float)Gdx.graphics.getWidth() / 2;
-        float centerY = (float)Gdx.graphics.getHeight() / 2;
+        float centerX = (float) Gdx.graphics.getWidth() / 2;
+        float centerY = (float) Gdx.graphics.getHeight() / 2;
 
         main.getBatch().begin();
         main.getBatch().draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());

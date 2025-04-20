@@ -1,8 +1,6 @@
 package com.core.data.game.container;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
 
 public class CategoryData {
     private final String categoryName;

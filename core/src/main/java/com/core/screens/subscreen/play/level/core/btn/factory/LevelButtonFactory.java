@@ -12,7 +12,6 @@ import com.core.data.assets.sprites.GameAssets;
 import com.core.screens.subscreen.play.level.core.Level;
 import com.core.screens.subscreen.play.level.core.btn.event.ClickedEvent;
 import com.core.screens.subscreen.play.level.core.btn.event.DragEvent;
-import com.main.Main;
 
 public class LevelButtonFactory {
 
@@ -67,7 +66,7 @@ public class LevelButtonFactory {
         TextureRegionDrawable t = new TextureRegionDrawable(image);
 
         final float imgArea = btnWidth * 0.9f;
-        final float imgScale = Math.min(imgArea/image.getWidth(), imgArea/image.getHeight());
+        final float imgScale = Math.min(imgArea / image.getWidth(), imgArea / image.getHeight());
 
         t.setMinSize(image.getWidth() * imgScale, image.getHeight() * imgScale);
         cardBackground.setMinSize(btnWidth, btnHeight);

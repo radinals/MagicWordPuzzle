@@ -1,7 +1,6 @@
 package com.core.screens.util.manager;
 
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Texture;
 import com.core.screens.mainscreen.MainMenuScreen;
 import com.core.screens.subscreen.learn.LearningScreen;
 import com.core.screens.subscreen.play.category.CategorySelectScreen;

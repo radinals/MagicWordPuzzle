@@ -9,9 +9,9 @@ public class LineManager {
 
     private final ShapeRenderer renderer;
     private final Line activeLine;
+    private final ArrayList<Line> lines;
     private boolean activeLineHasStartingPoint;
     private boolean activeLineHasEndPoint;
-    private final ArrayList<Line> lines;
     private Color normalLineColor;
     private Color incorrectLineColor;
     private Color correctLineColor;

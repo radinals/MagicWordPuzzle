@@ -35,7 +35,7 @@ public class LearningScreen extends BaseSubScreen {
         table.addListener(new ActorGestureListener() {
             @Override
             public void pan(InputEvent event, float x, float y, float deltaX, float deltaY) {
-                if (x > (float)Gdx.graphics.getWidth() / 2) {
+                if (x > (float) Gdx.graphics.getWidth() / 2) {
                     idx += 1;
                 } else {
                     idx -= 1;
@@ -50,7 +50,7 @@ public class LearningScreen extends BaseSubScreen {
             @Override
             public void tap(InputEvent event, float x, float y, int count, int button) {
 
-                if (x > (float)Gdx.graphics.getWidth() / 2) {
+                if (x > (float) Gdx.graphics.getWidth() / 2) {
                     idx += count;
                 } else {
                     idx -= count;
@@ -77,7 +77,7 @@ public class LearningScreen extends BaseSubScreen {
 
     private void calculateSize() {
         this.table.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight() * 0.8f);
-        this.table.setPosition((float)Gdx.graphics.getWidth() / 2 - this.table.getWidth() / 2, Gdx.graphics.getHeight() * 0.1f);
+        this.table.setPosition((float) Gdx.graphics.getWidth() / 2 - this.table.getWidth() / 2, Gdx.graphics.getHeight() * 0.1f);
         this.table.setDebug(true);
         this.btnWidth = Gdx.graphics.getWidth() * 0.8f;
         this.btnHeight = Gdx.graphics.getHeight() * 0.7f;

@@ -10,7 +10,6 @@ import com.core.screens.subscreen.play.level.core.btn.factory.LevelButtonFactory
 import com.core.screens.subscreen.play.level.core.btn.group.ButtonPair;
 import com.core.screens.subscreen.play.level.core.lines.LineManager;
 import com.core.screens.subscreen.play.level.core.randomizer.LevelRandomizer;
-import com.main.Main;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -20,8 +19,8 @@ public class Level {
     private final LevelButtonFactory btnFactory;
     private final LineManager lineManager;
     private final ArrayList<ButtonPair> levelObjects;
-    private float levelBtnSize;
     private final ArrayList<LevelEventListener> listeners;
+    private float levelBtnSize;
 
     public Level() {
         this.listeners = new ArrayList<>();
