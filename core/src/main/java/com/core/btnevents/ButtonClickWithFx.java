@@ -21,8 +21,6 @@ public abstract class ButtonClickWithFx extends SingleClickInputListener {
 
     }
 
-    ;
-
     @Override
     final public void firstTouchDown(InputEvent event, float x, float y, int pointer, int button) {
         if (fx != null) fx.play();

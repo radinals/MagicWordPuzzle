@@ -25,15 +25,11 @@ public class ClickedEvent extends ButtonClickWithFx {
     }
 
     @Override
-    public void firstTouchUp(InputEvent event, float x, float y, int pointer, int button) {
+    public void firstTouchUp(InputEvent event, float x, float y, int pointer, int button) throws IndexOutOfBoundsException {
         LevelBtn btn = (LevelBtn) event.getListenerActor();
 
         if (((LevelBtn) event.getListenerActor()).isDisabled()) return;
-        try {
-            main.screenManager.switchScreens(createLevel(btn.levelIdx), SlideOutScreen.SlideDirection.LEFT);
-        } catch (IndexOutOfBoundsException e) {
-            return;
-        }
+        main.screenManager.switchScreens(createLevel(btn.levelIdx), SlideOutScreen.SlideDirection.LEFT);
 
     }
 
