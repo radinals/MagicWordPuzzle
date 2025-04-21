@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Level {
-    public static boolean drawingLine = false;
     private final LevelButtonFactory btnFactory;
     private final LineManager lineManager;
     private final ArrayList<ButtonPair> levelObjects;
