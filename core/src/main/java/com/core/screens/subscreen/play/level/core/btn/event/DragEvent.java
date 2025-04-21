@@ -6,16 +6,13 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.DragListener;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.core.screens.subscreen.play.level.core.Level;
 import com.core.screens.subscreen.play.level.core.btn.group.ButtonPair;
 import com.core.screens.subscreen.play.level.core.lines.Line;
 import com.core.screens.subscreen.play.level.core.lines.LineManager;
 
-import java.util.LinkedList;
 import java.util.Stack;
 
 public class DragEvent extends DragListener {
@@ -24,19 +21,17 @@ public class DragEvent extends DragListener {
     private static int answCounter = 0;
     private final Level level;
     private ButtonPair dragStartPair;
-    private final int totalCards;
     private final LineManager lineManager;
 
     public DragEvent(Level level) {
         this.level = level;
-        this.totalCards = level.getLevelObjects().size();
         this.lineManager = level.getLineManager();
     }
 
     private static boolean lineConnectsTwoButtons(Button btn1, Button btn2, Line line) {
         final Vector2 lineStart = line.first, lineEnd = line.second;
         return (pointInButtonArea(btn1, lineStart.x, lineStart.y) && pointInButtonArea(btn2, lineEnd.x, lineEnd.y)) ||
-            (pointInButtonArea(btn2, lineStart.x, lineStart.y) && pointInButtonArea(btn2, lineEnd.x, lineEnd.y));
+            (pointInButtonArea(btn2, lineStart.x, lineStart.y) && pointInButtonArea(btn1, lineEnd.x, lineEnd.y));
     }
 
     private static boolean pointInButtonArea(Button btn, float x, float y) {
@@ -63,7 +58,7 @@ public class DragEvent extends DragListener {
             tintButtonsBackground(btn1, btn2,Color.RED);
         }
         ++answCounter;
-        if (answCounter >= totalCards) {
+        if (answCounter >= level.getLevelObjects().size()) {
             level.notifyListener("LevelComplete");
             answCounter = 0;
         }
@@ -103,11 +98,6 @@ public class DragEvent extends DragListener {
     public void dragStop(InputEvent event, float x, float y, int pointer) {
         if (pointer != 0) return;
 
-        // TODO:
-        // CHECK IF DRAG STOP IS ON TOP A VALID BUTTON
-        // IF TRUE: STORE THE DRAG BUTTON, MARK START & END BTN AS LINED
-        // IF FALSE: RETURN
-
         lineManager.setActiveLineEnd(event.getStageX(), event.getStageY());
 
         if (!lineManager.isActiveLineFormed()) {
@@ -119,7 +109,7 @@ public class DragEvent extends DragListener {
 
         for (ButtonPair pair : level.getLevelObjects()) {
             Button dragEnd = (dragSource instanceof ImageButton) ? pair.wordButton : pair.imgButton;
-            if (lineConnectsTwoButtons(dragEnd, dragStartPair.imgButton, level.getLineManager().getActiveLine()) &&
+            if (lineConnectsTwoButtons(dragEnd, dragSource, lineManager.getActiveLine()) &&
                 !buttonsIsLined(dragEnd, dragSource))
             {
                 linedButtons.add(dragEnd);
@@ -129,10 +119,10 @@ public class DragEvent extends DragListener {
             }
         }
 
-        lineManager.resetActiveLine();
-
         if (this.level.getLineManager().isActiveLineFormed())
             Gdx.graphics.requestRendering();
+
+        lineManager.resetActiveLine();
     }
 
 }
