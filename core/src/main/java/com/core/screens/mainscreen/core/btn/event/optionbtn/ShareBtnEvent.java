@@ -1,7 +1,7 @@
 package com.core.screens.mainscreen.core.btn.event.optionbtn;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.core.custom.ButtonClickWithFx;
+import com.core.btnevents.ButtonClickWithFx;
 import com.main.Main;
 
 public class ShareBtnEvent extends ButtonClickWithFx {

@@ -1,4 +1,4 @@
-package com.core.custom;
+package com.core.btnevents;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;

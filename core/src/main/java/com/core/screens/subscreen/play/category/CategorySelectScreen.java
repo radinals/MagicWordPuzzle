@@ -7,7 +7,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.core.custom.ButtonClickWithFx;
+import com.core.btnevents.ButtonClickWithFx;
 import com.core.data.assets.sprites.GameAssets;
 import com.core.data.game.container.CategoryData;
 import com.core.screens.util.base.BaseSubScreen;

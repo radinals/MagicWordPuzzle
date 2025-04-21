@@ -2,7 +2,7 @@ package com.core.screens.subscreen.play.level.core.btn.event;
 
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.core.custom.SingleClickInputListener;
+import com.core.btnevents.SingleClickInputListener;
 
 public class ClickedEvent extends SingleClickInputListener {
 
