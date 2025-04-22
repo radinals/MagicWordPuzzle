@@ -4,8 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.core.data.assets.sprites.GameAssets;
+import com.core.screens.mainscreen.core.btn.event.optionbtn.VolumeBtnEvent;
 import com.core.screens.mainscreen.core.ui.MainGameButtons;
 import com.core.screens.mainscreen.core.ui.OptionButtonRow;
 import com.core.screens.util.base.BaseScreen;
@@ -32,16 +38,38 @@ public class MainMenuScreen extends BaseScreen {
         calculateSizes();
 
         MainGameButtons mainGameButtons = new MainGameButtons(main, mainButtonWidth, mainButtonHeight);
-        OptionButtonRow optionButtonRow = new OptionButtonRow(main, extraButtonSize);
+        // OptionButtonRow optionButtonRow = new OptionButtonRow(main, extraButtonSize);
 
         mainGameButtons.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight() * 0.5f);
-        optionButtonRow.setSize(Gdx.graphics.getWidth(), extraButtonSize);
+        // optionButtonRow.setSize(Gdx.graphics.getWidth(), extraButtonSize);
 
         mainGameButtons.setPosition((float) Gdx.graphics.getWidth() / 2 - mainGameButtons.getWidth() / 2, titleY - titleHeight);
-        optionButtonRow.setPosition((float) Gdx.graphics.getWidth() / 2 - optionButtonRow.getWidth() / 2, Gdx.graphics.getHeight() * 0.25f);
+        // optionButtonRow.setPosition(Gdx.graphics.getWidth() - (optionButtonRow.getWidth() + 10), Gdx.graphics.getHeight() * 0.9f);
+
+        Button volumeBtn = createButton("volumeicon.png", new VolumeBtnEvent(main));
+        this.stage.addActor(volumeBtn);
+        volumeBtn.setPosition(Gdx.graphics.getWidth() - (volumeBtn.getWidth() + (volumeBtn.getWidth()*0.5f)), Gdx.graphics.getHeight() * 0.9f);
 
         this.stage.addActor(mainGameButtons);
-        this.stage.addActor(optionButtonRow);
+        // this.stage.addActor(optionButtonRow);
+    }
+
+    private Button createButton(String iconFile, ClickListener eventHandler) {
+        TextureRegionDrawable icon = new TextureRegionDrawable(
+            GameAssets.getInstance().assetManager.get(iconFile, Texture.class)
+        );
+        icon.setMinSize(extraButtonSize, extraButtonSize);
+
+        ImageButton.ImageButtonStyle style = new ImageButton.ImageButtonStyle();
+        style.imageUp = icon;
+        style.imageDown = icon.tint(Color.GRAY);
+
+        ImageButton btn = new ImageButton(style);
+        btn.setSize(extraButtonSize, extraButtonSize);
+
+        btn.addListener(eventHandler);
+
+        return btn;
     }
 
     public void calculateSizes() {
