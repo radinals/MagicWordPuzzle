@@ -26,6 +26,7 @@ public class DragEvent extends DragListener {
     public DragEvent(Level level) {
         this.level = level;
         this.lineManager = level.getLineManager();
+        answCounter = 0;
     }
 
     private static boolean lineConnectsTwoButtons(Button btn1, Button btn2, Line line) {
