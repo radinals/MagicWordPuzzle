@@ -16,7 +16,6 @@ import com.core.screens.util.manager.ScreenManager;
  */
 public class Main extends Game {
 
-    private final static float TRANSITION_DURATION = 0.55f;
     public GameConfig gameConfig;
     public ScreenManager screenManager;
     private SpriteBatch batch;
