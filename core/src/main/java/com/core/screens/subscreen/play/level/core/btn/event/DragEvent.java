@@ -18,6 +18,8 @@ import java.util.Stack;
 public class DragEvent extends DragListener {
 
     private final static Stack<Button> linedButtons = new Stack<>();
+    private final static Sound correctFx = Gdx.audio.newSound(Gdx.files.internal("audio/success.mp3"));
+    private final static Sound incorrectFx = Gdx.audio.newSound(Gdx.files.internal("audio/incorrect.mp3"));
     private static int answCounter = 0;
     private final Level level;
     private ButtonPair dragStartPair;
@@ -54,9 +56,11 @@ public class DragEvent extends DragListener {
         if (cardsPairedCorrectly) {
             lineManager.storeCurrentActiveLine(LineManager.LineType.CorrectLine);
             tintButtonsBackground(btn1, btn2,Color.GREEN);
+            correctFx.play();
         } else {
             lineManager.storeCurrentActiveLine(LineManager.LineType.IncorrectLine);
             tintButtonsBackground(btn1, btn2,Color.RED);
+            incorrectFx.play();
         }
         ++answCounter;
         if (answCounter >= level.getLevelObjects().size()) {
