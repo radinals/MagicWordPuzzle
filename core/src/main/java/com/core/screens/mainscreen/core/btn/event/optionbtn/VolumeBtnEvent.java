@@ -14,7 +14,7 @@ public class VolumeBtnEvent extends ButtonClickWithFx {
 
     @Override
     public void touchDownAfterFx(InputEvent event, float x, float y, int pointer, int button) {
-
+        main.toggleBackgroundMusic();
     }
 
     @Override

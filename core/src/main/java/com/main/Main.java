@@ -38,6 +38,13 @@ public class Main extends Game {
         this.backgroundMusic.play();
     }
 
+    public void toggleBackgroundMusic() {
+        if(this.backgroundMusic.isPlaying())
+            this.backgroundMusic.stop();
+        else
+            this.backgroundMusic.play();
+    }
+
     public void openVolumeSettings() {
         this.androidActions.openVolumeSettings();
     }
