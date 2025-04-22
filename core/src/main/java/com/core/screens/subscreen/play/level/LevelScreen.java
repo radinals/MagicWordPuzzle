@@ -24,7 +24,6 @@ public class LevelScreen extends BaseSubScreen {
     public void calculateTableSize() {
         this.table.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight() * 0.8f);
         this.table.setPosition((float) Gdx.graphics.getWidth() / 2 - table.getWidth() / 2, Gdx.graphics.getHeight() * 0.1f);
-        this.table.setDebug(true);
     }
 
     private void initLevel(Level level) {

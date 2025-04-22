@@ -25,7 +25,6 @@ public abstract class BaseSubScreen extends BaseScreen {
         super(main);
         this.topRowTable = new Table();
         Gdx.input.setInputProcessor(stage);
-        topRowTable.setDebug(true);
         topRowTable.left().top();
         calculateSizes();
         createBackButton();

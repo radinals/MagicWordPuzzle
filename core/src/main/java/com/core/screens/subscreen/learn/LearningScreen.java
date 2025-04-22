@@ -78,7 +78,6 @@ public class LearningScreen extends BaseSubScreen {
     private void calculateSize() {
         this.table.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight() * 0.8f);
         this.table.setPosition((float) Gdx.graphics.getWidth() / 2 - this.table.getWidth() / 2, Gdx.graphics.getHeight() * 0.1f);
-        this.table.setDebug(true);
         this.btnWidth = Gdx.graphics.getWidth() * 0.8f;
         this.btnHeight = Gdx.graphics.getHeight() * 0.7f;
     }

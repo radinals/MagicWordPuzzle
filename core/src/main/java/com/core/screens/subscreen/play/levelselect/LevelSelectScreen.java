@@ -23,7 +23,6 @@ public class LevelSelectScreen extends BaseSubScreen {
         this.levelCount = levelCount;
         this.levelButtons = new Table();
         this.rootTable = new Table();
-        this.rootTable.setDebug(true);
         this.rootTable.top();
         calculateSizes();
         ScrollPane scrollPane = new ScrollPane(levelButtons);
