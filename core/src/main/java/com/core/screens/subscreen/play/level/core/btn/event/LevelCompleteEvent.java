@@ -1,5 +1,7 @@
 package com.core.screens.subscreen.play.level.core.btn.event;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.core.screens.subscreen.play.level.LevelScreen;
 import com.core.screens.subscreen.play.levelselect.core.factory.LevelFactory;
 import com.core.screens.util.transition.SlideOutScreen;
@@ -10,6 +12,7 @@ public class LevelCompleteEvent implements LevelEventListener {
     private final Main main;
     private final LevelFactory levelFactory;
     private int levelIdx;
+    private static Sound levelCompleteFx = Gdx.audio.newSound(Gdx.files.internal("audio/levelcomplete.mp3"));
 
     public LevelCompleteEvent(Main main, LevelFactory levelFactory, int currentLevelIdx) {
         this.levelIdx = currentLevelIdx;
@@ -26,6 +29,7 @@ public class LevelCompleteEvent implements LevelEventListener {
         } else {
             main.screenManager.loadMainMenuScreen();
         }
+        levelCompleteFx.play();
     }
 
     @Override
