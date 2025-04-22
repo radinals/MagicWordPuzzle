@@ -33,7 +33,7 @@ public class Main extends Game {
 
     public void loadBackgroundMusic() {
         this.backgroundMusic = GameAssets.getInstance().assetManager.get("audio/bgmusic.ogg", Music.class);
-        this.backgroundMusic.setVolume(0.25f);
+        this.backgroundMusic.setVolume(0.08f);
         this.backgroundMusic.setLooping(true);
         this.backgroundMusic.play();
     }
