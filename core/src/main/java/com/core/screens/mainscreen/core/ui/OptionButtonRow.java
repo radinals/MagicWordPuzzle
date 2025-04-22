@@ -25,10 +25,10 @@ public class OptionButtonRow extends Table {
         this.btnSize = buttonSize;
         this.columnPadding = buttonSize * 0.25f;
 
-        createButton("googleplayicon.png", new GooglePlayBtnEvent(main));
+        //createButton("googleplayicon.png", new GooglePlayBtnEvent(main));
         createButton("volumeicon.png", new VolumeBtnEvent(main));
-        createButton("shareicon.png", new ShareBtnEvent(main));
-        createButton("stars.png", new RateBtnEvent(main));
+        //createButton("shareicon.png", new ShareBtnEvent(main));
+        //createButton("stars.png", new RateBtnEvent(main));
     }
 
     private void createButton(String iconFile, ClickListener eventHandler) {
