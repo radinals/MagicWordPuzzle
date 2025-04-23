@@ -3,9 +3,9 @@ package com.core.screens.subscreen.play.level;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.core.screens.subscreen.play.level.core.Level;
-import com.core.screens.subscreen.play.level.core.lines.LineManager;
-import com.core.screens.util.base.BaseSubScreen;
+import com.core.screens.subscreen.play.level.component.Level;
+import com.core.screens.subscreen.play.level.component.lines.LineManager;
+import com.core.screens.component.base.BaseSubScreen;
 import com.main.Main;
 
 public class LevelScreen extends BaseSubScreen {

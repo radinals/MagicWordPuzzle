@@ -10,8 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.core.data.game.container.CardData;
-import com.core.screens.util.base.BaseSubScreen;
+import com.core.model.data.CardData;
+import com.core.screens.component.base.BaseSubScreen;
 import com.main.Main;
 
 public class LearningScreen extends BaseSubScreen {

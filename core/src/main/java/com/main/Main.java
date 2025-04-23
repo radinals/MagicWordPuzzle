@@ -6,17 +6,17 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.core.data.assets.sprites.GameAssets;
-import com.core.data.game.manager.GameConfig;
-import com.core.screens.util.loading.LoadingScreen;
-import com.core.screens.util.manager.ScreenManager;
+import com.core.assets.sprites.GameAssets;
+import com.core.model.GameData;
+import com.core.screens.LoadingScreen;
+import com.core.screens.component.manager.ScreenManager;
 
 /**
  * {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms.
  */
 public class Main extends Game {
 
-    public GameConfig gameConfig;
+    public GameData gameData;
     public ScreenManager screenManager;
     private SpriteBatch batch;
     private Music backgroundMusic;
@@ -48,8 +48,8 @@ public class Main extends Game {
         this.androidActions.openVolumeSettings();
     }
 
-    public GameConfig getGameConfig() {
-        return gameConfig;
+    public GameData getGameConfig() {
+        return gameData;
     }
 
     @Override
