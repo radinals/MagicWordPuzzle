@@ -16,8 +16,10 @@ public class LineManager {
     private Color incorrectLineColor;
     private Color correctLineColor;
     private float lineSize;
+    private boolean renderPaused;
 
     public LineManager() {
+        this.renderPaused = false;
         this.renderer = new ShapeRenderer();
         this.lines = new ArrayList<>();
         this.lineSize = 12.0f;
@@ -31,6 +33,7 @@ public class LineManager {
     }
 
     public void render() {
+        if(renderPaused) return;
         renderer.begin(ShapeRenderer.ShapeType.Filled);
         if (isActiveLineFormed())
             drawLine(activeLine);
@@ -49,6 +52,10 @@ public class LineManager {
             case NormalLine -> tmp.color = normalLineColor;
         }
         this.lines.add(tmp);
+    }
+
+    public void pauseRenderering() {
+        this.renderPaused = true;
     }
 
     public void setActiveLineStart(float x, float y) {
