@@ -6,6 +6,8 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.utils.XmlReader;
 import com.core.assets.font.BitNumbersSprites;
 
@@ -19,6 +21,14 @@ public class GameAssets {
         this.assetManager = new AssetManager();
         this.bitNumbers = new BitNumbersSprites();
         loadConfig("data/assetConfig.xml");
+    }
+
+    public static BitmapFont generateFont(String fontfile, int fontSize) {
+        FileHandle fontFile = Gdx.files.internal(fontfile);
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(fontFile);
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter.size = fontSize;
+        return generator.generateFont(parameter);
     }
 
     public static boolean loadAssets() {

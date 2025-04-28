@@ -33,7 +33,7 @@ public class LevelButtonFactory {
         this.cardBackground = new TextureRegionDrawable(
             GameAssets.getInstance().assetManager.get("cardbg.png", Texture.class)
         );
-        FONT = generateFont("altone/Altone Trial-Bold.ttf");
+        FONT = GameAssets.generateFont("Lato/Lato-Bold.ttf", 30);
     }
 
     public void setBtnHeight(float btnHeight) {
@@ -44,21 +44,13 @@ public class LevelButtonFactory {
         this.btnWidth = btnWidth;
     }
 
-    private BitmapFont generateFont(String fontfile) {
-        FileHandle fontFile = Gdx.files.internal(fontfile);
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(fontFile);
-        FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter.size = 30;
-        BitmapFont font = generator.generateFont(parameter);
-        return font;
-    }
 
     public TextButton createWordButton(String word, Sound sound) {
         TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
 
         style.font = FONT;
 
-        style.fontColor = Color.BLACK;
+        style.fontColor = Color.BLUE; // TODO: GET PROPER COLOR
 
         cardBackground.setMinSize(btnWidth, btnHeight);
         style.up = style.down = cardBackground;
