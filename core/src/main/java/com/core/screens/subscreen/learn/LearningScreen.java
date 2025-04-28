@@ -1,117 +1,151 @@
 package com.core.screens.subscreen.learn;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.ActorGestureListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
+import com.badlogic.gdx.utils.Align;
+import com.core.assets.sprites.GameAssets;
 import com.core.model.data.CardData;
 import com.core.screens.component.base.BaseSubScreen;
+import com.core.screens.component.events.ButtonClickWithFx;
+import com.core.screens.component.events.SingleClickInputListener;
 import com.main.Main;
+
+import java.util.LinkedList;
 
 public class LearningScreen extends BaseSubScreen {
 
-    private final Table table;
-    private float btnWidth;
-    private float btnHeight;
+    private LinkedList<CardData> cards;
+    private Table table;
+    private Label wordLabel;
+    private Image wordImage;
+    private int currentCardIdx;
 
-    private Label label;
+    private float cardSize;
+    private float cardBgSize;
 
-    private int idx = 0;
+    private Sound wordSound;
+
+    private Texture currentTexture;
 
     public LearningScreen(Main main) {
         super(main);
-
+        calculateSizes();
         this.table = new Table();
+        this.table.setSize(cardSize, Gdx.graphics.getHeight());
+        this.table.setPosition(0, 0);
+        this.wordLabel = null;
+        this.currentTexture = null;
+        this.wordImage = null;
+        this.currentCardIdx = 0;
+        this.cards = main.getGameConfig().getCards();
+        this.wordSound = null;
+        this.wordImage = null;
+        Label.LabelStyle style = new Label.LabelStyle();
+        style.font = GameAssets.generateFont("Lato/Lato-Bold.ttf", 80);
+        style.fontColor = Color.BLACK;
+        this.wordLabel = new Label("",style);
+        this.wordLabel.setWrap(true);
+        this.wordLabel.setWidth(cardSize);
+        this.wordLabel.setAlignment(Align.center, Align.center); // Align horizontally and vertically
+        createCardBackground();
+        loadCard();
+        this.table.addActor(wordImage);
+        this.table.row();
+        this.table.addActor(wordLabel);
 
-        this.btnWidth = 0;
-        this.btnHeight = 0;
+        this.table.addListener(new SingleClickInputListener() {
 
-        table.addListener(new ActorGestureListener() {
             @Override
-            public void pan(InputEvent event, float x, float y, float deltaX, float deltaY) {
-                if (x > (float) Gdx.graphics.getWidth() / 2) {
-                    idx += 1;
+            public void firstTouchDown(InputEvent event, float x, float y, int pointer, int button) {
+                final float sx = event.getStageX();
+                final float centerX = Gdx.graphics.getWidth() / 2;
+
+                if (sx < centerX - (cardSize * 0.25f)) {
+                    currentCardIdx--;
+                } else if (sx > centerX + (cardSize * 0.25f)) {
+                    currentCardIdx++;
                 } else {
-                    idx -= 1;
+                    if (wordSound != null) {
+                        wordSound.play(1.0f);
+                    }
+                    return;
                 }
 
-                if (idx < 0) idx = main.getGameConfig().getCards().size() - 1;
-                if (idx >= main.getGameConfig().getCards().size()) idx = 0;
+                if (currentCardIdx >= cards.size()) {
+                    currentCardIdx = 0;
+                } else if (currentCardIdx < 0) {
+                    currentCardIdx = cards.size() -1;
+                }
 
-                label.setText(main.getGameConfig().getCards().get(idx).getWord());
+                loadCard();
+
             }
 
             @Override
-            public void tap(InputEvent event, float x, float y, int count, int button) {
-
-                if (x > (float) Gdx.graphics.getWidth() / 2) {
-                    idx += count;
-                } else {
-                    idx -= count;
-                }
-
-                if (idx < 0) idx = main.getGameConfig().getCards().size() - 1;
-                if (idx >= main.getGameConfig().getCards().size()) idx = 0;
-
-                label.setText(main.getGameConfig().getCards().get(idx).getWord());
+            public void firstTouchUp(InputEvent event, float x, float y, int pointer, int button) {
             }
         });
 
-        calculateSize();
-        super.stage.addActor(table);
-        loadCards();
+        this.stage.addActor(table);
     }
 
-    private void addCard(String imgFile, String word) {
-        table.add(createImg(imgFile));
-        table.row();
-        table.add(createLabel(word));
-
+    private void calculateSizes() {
+        this.cardSize = Gdx.graphics.getWidth()*0.8f;
+        this.cardBgSize = Gdx.graphics.getWidth()*0.9f;
     }
 
-    private void calculateSize() {
-        this.table.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight() * 0.8f);
-        this.table.setPosition((float) Gdx.graphics.getWidth() / 2 - this.table.getWidth() / 2, Gdx.graphics.getHeight() * 0.1f);
-        this.btnWidth = Gdx.graphics.getWidth() * 0.8f;
-        this.btnHeight = Gdx.graphics.getHeight() * 0.7f;
+    private void createCardBackground() {
+         TextureRegionDrawable cardBackground = new TextureRegionDrawable(
+            GameAssets.getInstance().assetManager.get("cardbg.png", Texture.class)
+        );
+
+         cardBackground.setMinSize(this.cardBgSize, this.cardBgSize);
+
+         Image image = new Image(cardBackground);
+
+        image.setPosition(Gdx.graphics.getWidth()/2 - cardBgSize/2, Gdx.graphics.getHeight()*0.6f - cardBgSize/2);
+
+        this.stage.addActor(image);
     }
 
-    private Label createLabel(String word) {
+    private void loadCard() {
+        CardData currentCard = this.cards.get(currentCardIdx);
 
-        Label.LabelStyle style = new Label.LabelStyle();
+        if (this.currentTexture != null) {
+            this.currentTexture.dispose();
+            this.currentTexture = null;
+        }
 
-        // TODO: SETUP BUTTON BG
-        style.font = new BitmapFont(Gdx.files.internal("default.fnt"));
-        style.font.getData().setScale(8f); // unreliable for UI
-        style.fontColor = Color.BLACK;
+        this.currentTexture = new Texture(Gdx.files.internal(currentCard.getImgFile()));
 
-        Label label = new Label(word, style);
+        if (wordSound != null) {
+            wordSound.stop();
+            wordSound.dispose();
+        }
 
-        this.label = label;
+        this.wordSound = Gdx.audio.newSound(Gdx.files.internal(currentCard.getAudio()));
 
-        return label;
-    }
+        TextureRegionDrawable texture = new TextureRegionDrawable(currentTexture);
 
-    private Image createImg(String imgFile) {
-        Texture texture = new Texture(Gdx.files.internal(imgFile));
-        texture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        texture.setMinSize(cardSize,cardSize);
 
-        TextureRegionDrawable drawable = new TextureRegionDrawable(texture);
-        drawable.setMinSize(this.btnWidth, this.btnHeight);
+        if (this.wordImage == null)
+            this.wordImage = new Image(texture);
+        else
+            this.wordImage.setDrawable(texture);
 
-        return new Image(drawable);
-    }
-
-    // IDEA: TODO:  OVERRIDING SINGLE BUTTON REPEATEDLY OR LOADING AT PRESS
-    private void loadCards() {
-        CardData card = main.getGameConfig().getCards().get(idx);
-        addCard(card.getImgFile(), card.getWord());
+        this.wordImage.setPosition(Gdx.graphics.getWidth()/2 - cardSize/2, Gdx.graphics.getHeight()*0.6f - cardSize/2);
+        this.wordLabel.setText(currentCard.getWord().toUpperCase());
+        this.wordLabel.setPosition(Gdx.graphics.getWidth()/2 - this.wordLabel.getWidth()/2, Gdx.graphics.getHeight()*0.3f - this.wordLabel.getHeight()/2);
     }
 
     @Override
