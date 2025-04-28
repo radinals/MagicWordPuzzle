@@ -2,12 +2,13 @@ package com.core.screens.component.transition;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 import com.main.Main;
 
-public class SlideOutScreen implements Screen {
+public class SlideOutTransition implements Screen {
 
     private final Screen oldScreen;
     private final Screen newScreen;
@@ -22,7 +23,7 @@ public class SlideOutScreen implements Screen {
     private Texture oldScreenTexture;
     private Texture newScreenTexture;
 
-    public SlideOutScreen(Main main, Screen oldScreen, Screen newScreen, float duration, SlideDirection direction) {
+    public SlideOutTransition(Main main, Screen oldScreen, Screen newScreen, float duration, SlideDirection direction) {
         Gdx.graphics.setContinuousRendering(true);
         this.main = main;
 
@@ -49,11 +50,6 @@ public class SlideOutScreen implements Screen {
 
         this.oldScreen.pause();
         this.newScreen.pause();
-
-        newScreen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        newScreen.show();
-
-
     }
 
     private static FrameBuffer createFrameBuffer() {
@@ -65,12 +61,11 @@ public class SlideOutScreen implements Screen {
         this.newScreen.show();
         this.newScreen.resize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         this.newScreen.render(0);
-
     }
 
     @Override
     public void render(float delta) {
-        currentTime = Math.min(currentTime + delta, duration);
+        currentTime = Math.min(currentTime + (duration * delta), duration);
         float alpha = currentTime / duration;
 
         oldFrameBuffer.begin();
@@ -83,12 +78,13 @@ public class SlideOutScreen implements Screen {
         newFrameBuffer.end();
         newScreenTexture = newFrameBuffer.getColorBufferTexture();
 
-        //Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         float width = oldScreenTexture.getWidth();
         float offset = slideLeft ? -width * alpha : width * alpha;
 
         main.getBatch().begin();
+
         main.getBatch().draw(oldScreenTexture,
             offset, 0,
             oldScreenTexture.getWidth(), oldScreenTexture.getHeight(), // width, height
