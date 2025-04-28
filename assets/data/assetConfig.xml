@@ -9,6 +9,10 @@
     <texture file="title.png"/>
     <texture file="cardbg.png"/>
     <texture file="backarrow.png"/>
+    <texture file="LevelComplete.png"/>
+    <texture file="LevelFailed.png"/>
+    <texture file="LevelMsg.png"/>
+    <texture file="okbtn.png"/>
 
     <texture file="category/bg/bg_animals.png"/>
     <texture file="category/bg/bg_fruits.png"/>
@@ -26,4 +30,7 @@
     <music file="audio/bgmusic.ogg"/>
     <audio file="audio/fxpop1.wav"/>
     <audio file="audio/fxpop2.wav"/>
+
+    <audio file="audio/winfx.ogg"/>
+    <audio file="audio/failfx.ogg"/>
 </resources>

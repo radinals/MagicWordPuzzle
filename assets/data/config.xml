@@ -99,7 +99,7 @@
         <card word="watercolor paints" img="icon/schoolsupplies/watercolorpaints.png" audio="audio/schoolsupplies/watercolorpaints.wav" group="4"/>
     </category>
 
-    <category name="Transport" icon="category/transport.png" levels="20" LevelIconColor="#2d398c" categorybg="category/bg/bg_transport.png">
+    <category name="Transportation" icon="category/transport.png" levels="20" LevelIconColor="#2d398c" categorybg="category/bg/bg_transport.png">
         <card word="airbaloon" img="icon/transport/airbaloon.png" audio="audio/transport/airbaloon.wav" group="0"/>
         <card word="airplane" img="icon/transport/airplane.png" audio="audio/transport/airplane.wav" group="0"/>
         <card word="ambulance" img="icon/transport/ambulance.png" audio="audio/transport/ambulance.wav" group="0"/>
