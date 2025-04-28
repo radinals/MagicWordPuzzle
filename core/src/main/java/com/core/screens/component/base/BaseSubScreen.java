@@ -8,18 +8,22 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.core.screens.component.events.ButtonClickWithFx;
 import com.core.assets.sprites.GameAssets;
+import com.core.screens.mainscreen.component.events.optionbtn.VolumeBtnEvent;
 import com.main.Main;
 
 public abstract class BaseSubScreen extends BaseScreen {
     protected float backBtnSize;
     protected Label screenTitle;
     protected Table topRowTable;
+    protected  ImageButton backButton;
 
     public BaseSubScreen(Main main) {
         super(main);
@@ -28,13 +32,35 @@ public abstract class BaseSubScreen extends BaseScreen {
         topRowTable.left().top();
         calculateSizes();
         createBackButton();
-        createScreenTitle();
+       // createScreenTitle();
         this.stage.addActor(topRowTable);
+    }
+
+    private void createTitleBackground() {
+
+    }
+
+    private Button createButton(String iconFile, ClickListener eventHandler) {
+        TextureRegionDrawable icon = new TextureRegionDrawable(
+                GameAssets.getInstance().assetManager.get(iconFile, Texture.class)
+        );
+        icon.setMinSize(backBtnSize, backBtnSize);
+
+        ImageButton.ImageButtonStyle style = new ImageButton.ImageButtonStyle();
+        style.imageUp = icon;
+        style.imageDown = icon.tint(Color.GRAY);
+
+        ImageButton btn = new ImageButton(style);
+        btn.setSize(backBtnSize, backBtnSize);
+
+        btn.addListener(eventHandler);
+
+        return btn;
     }
 
     private void calculateSizes() {
         this.topRowTable.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getWidth() * 0.15f);
-        this.topRowTable.setPosition(0, Gdx.graphics.getHeight() - topRowTable.getHeight());
+        this.topRowTable.setPosition(0, Gdx.graphics.getHeight() - topRowTable.getHeight() - 10);
         this.topRowTable.setOriginX(0);
         this.backBtnSize = Gdx.graphics.getWidth() * 0.15f;
     }
@@ -43,15 +69,19 @@ public abstract class BaseSubScreen extends BaseScreen {
         Label.LabelStyle style = new Label.LabelStyle();
 
         // TODO: SETUP BUTTON BG
-        style.font = new BitmapFont(Gdx.files.internal("default.fnt"));
-        style.font.getData().setScale(3f); // unreliable for UI
+        style.font = GameAssets.generateFont("Lato/Lato-Bold.ttf", 50);
         style.fontColor = Color.BLACK;
 
+        TextureRegionDrawable bg = new TextureRegionDrawable(new Texture(Gdx.files.internal("titlebg.png")));
+
         screenTitle = new Label("", style);
-
-        screenTitle.setWidth(topRowTable.getWidth());
-
-        topRowTable.add(screenTitle).left().expandX().fillX().pad(10);
+        screenTitle.setAlignment(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+        screenTitle.getStyle().background = bg;
+        screenTitle.setSize(Gdx.graphics.getWidth() - ((backBtnSize * 2) + 40), backBtnSize);
+        bg.setMinSize(screenTitle.getWidth(), backBtnSize);
+        topRowTable.add(screenTitle).left().expandX().fillX().padTop(10);
+        Button volumeBtn = createButton("volumeicon.png", new VolumeBtnEvent(main));
+        topRowTable.add(volumeBtn).left().expandX().fillX().padLeft(10).padRight(10).padTop(10);
     }
 
     private void createBackButton() {
@@ -82,7 +112,8 @@ public abstract class BaseSubScreen extends BaseScreen {
             }
         });
 
-        topRowTable.add(backButton).left().fillX().pad(10);
+        this.backButton = backButton;
+        topRowTable.add(backButton).left().fillX().padLeft(10).padRight(10).padTop(10);
     }
 
     @Override

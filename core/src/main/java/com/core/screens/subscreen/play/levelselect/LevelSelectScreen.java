@@ -18,6 +18,7 @@ public class LevelSelectScreen extends BaseSubScreen {
 
     public LevelSelectScreen(Main main, String levelCategoryName, int levelCount, Color levelIconColor, String bgImageFile) {
         super(main);
+        //super.screenTitle.setText(levelCategoryName);
         super.setBgImageFile(bgImageFile);
         this.buttonFactory = new CategoryButtonFactory(main, levelIconColor, levelCategoryName);
         this.levelCount = levelCount;

@@ -5,8 +5,10 @@ import com.core.screens.component.events.ButtonClickWithFx;
 import com.core.screens.subscreen.play.level.LevelScreen;
 import com.core.screens.subscreen.play.levelselect.component.btn.LevelBtn;
 import com.core.screens.subscreen.play.levelselect.component.factory.LevelFactory;
-import com.core.screens.component.transition.SlideOutScreen;
+import com.core.screens.component.transition.SlideOutTransition;
 import com.main.Main;
+
+import java.awt.Image;
 
 public class ClickedEvent extends ButtonClickWithFx {
 
@@ -29,11 +31,13 @@ public class ClickedEvent extends ButtonClickWithFx {
         LevelBtn btn = (LevelBtn) event.getListenerActor();
 
         if (((LevelBtn) event.getListenerActor()).isDisabled()) return;
-        main.screenManager.switchScreens(createLevel(btn.levelIdx), SlideOutScreen.SlideDirection.LEFT);
 
+        LevelScreen level = createLevel(btn.levelIdx);
+        level.showInstructionImage();
+        main.screenManager.switchScreens(level, SlideOutTransition.SlideDirection.LEFT);
     }
 
     private LevelScreen createLevel(int idx) throws IndexOutOfBoundsException {
-        return new LevelScreen(main, levelFactory.createLevel(idx));
+        return new LevelScreen(main, levelFactory.createLevel(idx), levelFactory);
     }
 }

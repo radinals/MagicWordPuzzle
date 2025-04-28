@@ -18,12 +18,9 @@ import com.main.Main;
 
 public class MainMenuScreen extends BaseScreen {
 
-    private int titleWidth, titleHeight;
-    private int titleX, titleY;
-
-    private int mainButtonWidth;
-    private int mainButtonHeight;
-
+    private float titleWidth, titleHeight;
+    private float titleX, titleY;
+    private float mainButtonWidth, mainButtonHeight;
     private float extraButtonSize;
 
     public MainMenuScreen(Main main) {
@@ -47,7 +44,7 @@ public class MainMenuScreen extends BaseScreen {
 
         Button volumeBtn = createButton("volumeicon.png", new VolumeBtnEvent(main));
         this.stage.addActor(volumeBtn);
-        volumeBtn.setPosition(Gdx.graphics.getWidth() - (volumeBtn.getWidth() + (volumeBtn.getWidth()*0.5f)), Gdx.graphics.getHeight() * 0.9f);
+        volumeBtn.setPosition(Gdx.graphics.getWidth() - volumeBtn.getWidth() * 1.1f, Gdx.graphics.getHeight() * 0.90f);
 
         this.stage.addActor(mainGameButtons);
         // this.stage.addActor(optionButtonRow);
@@ -75,13 +72,15 @@ public class MainMenuScreen extends BaseScreen {
 
         int sh = Gdx.graphics.getHeight(), sw = Gdx.graphics.getWidth();
 
-        this.mainButtonWidth = (int) (sw * 0.7f);
-        this.mainButtonHeight = (int) (sh * 0.09f);
-        this.titleWidth = (int) (sw * 0.8f);
-        this.titleHeight = (int) (sh * 0.35f);
+        final float topPadding = Gdx.graphics.getHeight() * 0.025f;
 
-        this.titleX = Gdx.graphics.getWidth() / 2 - titleWidth / 2;
-        this.titleY = Gdx.graphics.getHeight() / 2 + 100;
+        this.mainButtonWidth = (sw * 0.6f);
+        this.mainButtonHeight = (sh * 0.09f);
+        this.titleWidth = (sw * 0.8f);
+        this.titleHeight =  (sh * 0.35f);
+
+        this.titleX = (Gdx.graphics.getWidth() / 2) - titleWidth / 2;
+        this.titleY = (Gdx.graphics.getHeight() / 2) - topPadding;
 
         this.extraButtonSize = sw * 0.15f;
     }

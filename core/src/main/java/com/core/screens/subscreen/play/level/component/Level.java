@@ -5,7 +5,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.core.assets.sprites.GameAssets;
-import com.core.screens.subscreen.play.level.component.btn.event.LevelEventListener;
+import com.core.screens.subscreen.play.level.component.event.LevelEventListener;
 import com.core.screens.subscreen.play.level.component.btn.factory.LevelButtonFactory;
 import com.core.screens.subscreen.play.level.component.btn.group.ButtonPair;
 import com.core.screens.subscreen.play.level.component.lines.LineManager;
@@ -20,8 +20,10 @@ public class Level {
     private final ArrayList<ButtonPair> levelObjects;
     private final ArrayList<LevelEventListener> listeners;
     private float levelBtnSize;
+    private int levelIdx;
 
-    public Level() {
+    public Level(int levelIdx) {
+        this.levelIdx = levelIdx;
         this.listeners = new ArrayList<>();
         this.levelObjects = new ArrayList<>();
         this.lineManager = new LineManager();
@@ -42,8 +44,11 @@ public class Level {
     public void notifyListener(String eventType) {
         for (LevelEventListener listener : listeners) {
             switch (eventType) {
+                case "LevelCompleteFailed":
+                    listener.onLevelComplete(true);
+                    break;
                 case "LevelComplete":
-                    listener.onLevelComplete();
+                    listener.onLevelComplete(false);
                     break;
                 default:
                     return;
@@ -65,7 +70,8 @@ public class Level {
     private ButtonPair createPairButtons(String word, Texture image, Sound audio) {
         return new ButtonPair(
             btnFactory.createWordButton(word, audio),
-            btnFactory.createImageButton(image, audio)
+            btnFactory.createImageButton(image, audio),
+            audio
         );
     }
 
@@ -83,5 +89,9 @@ public class Level {
 
     public LineManager getLineManager() {
         return lineManager;
+    }
+
+    public int getLevelIdx() {
+        return levelIdx;
     }
 }

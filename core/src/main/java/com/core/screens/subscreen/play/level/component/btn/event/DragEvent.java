@@ -26,10 +26,13 @@ public class DragEvent extends DragListener {
     private ButtonPair dragStartPair;
     private final LineManager lineManager;
 
+    private static int wrongAnswers = 0;
+
     public DragEvent(Level level) {
         this.level = level;
         this.lineManager = level.getLineManager();
         answCounter = 0;
+        wrongAnswers = 0;
     }
 
     private static boolean lineConnectsTwoButtons(Button btn1, Button btn2, Line line) {
@@ -62,11 +65,13 @@ public class DragEvent extends DragListener {
             lineManager.storeCurrentActiveLine(LineManager.LineType.IncorrectLine);
             tintButtonsBackground(btn1, btn2,Color.RED);
             incorrectFx.play();
+            wrongAnswers++;
         }
         ++answCounter;
         if (answCounter >= level.getLevelObjects().size()) {
-            level.notifyListener("LevelComplete");
+            level.notifyListener((wrongAnswers >= answCounter) ? "LevelCompleteFailed" : "LevelComplete");
             answCounter = 0;
+            wrongAnswers = 0;
         }
     }
 

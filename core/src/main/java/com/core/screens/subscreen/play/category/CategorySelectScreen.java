@@ -22,6 +22,7 @@ public class CategorySelectScreen extends BaseSubScreen {
 
     public CategorySelectScreen(Main main) {
         super(main);
+        //super.screenTitle.setText("Categories");
         this.table = new Table();
         this.table.setPosition(
             (float) Gdx.graphics.getWidth() / 2 - table.getWidth() / 2,

@@ -4,7 +4,7 @@ import com.core.model.data.CardData;
 import com.core.model.data.CategoryData;
 import com.core.model.data.LevelData;
 import com.core.screens.subscreen.play.level.component.Level;
-import com.core.screens.subscreen.play.level.component.btn.event.LevelCompleteEvent;
+import com.core.screens.subscreen.play.level.component.event.LevelCompleteEvent;
 import com.main.Main;
 
 public class LevelFactory {
@@ -28,9 +28,7 @@ public class LevelFactory {
 
         LevelData levelData = categoryData.getLevels()[levelIdx];
 
-        Level level = new Level();
-
-        level.addListener(new LevelCompleteEvent(main, this, levelIdx));
+        Level level = new Level(levelIdx);
 
         for (CardData card : levelData.getCards())
             level.addPair(card.getWord(), card.getImgFile(), card.getAudio());
