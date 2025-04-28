@@ -17,7 +17,6 @@ public class LevelCompleteEvent implements LevelEventListener {
     private final Main main;
     private final LevelFactory levelFactory;
     private int levelIdx;
-    private static Sound levelCompleteFx = Gdx.audio.newSound(Gdx.files.internal("audio/levelcomplete.mp3"));
     private Dialog dialog;
     private LevelScreen screen;
 
@@ -37,7 +36,6 @@ public class LevelCompleteEvent implements LevelEventListener {
                  nextScreen = new LevelScreen(main, levelFactory.createLevel(++levelIdx), levelFactory);
              }
             main.screenManager.switchScreensDirectly(new LevelCompleted(main, nextScreen, levelFailed), SlideOutTransition.SlideDirection.LEFT);
-            levelCompleteFx.play();
         } else if (levelFailed) {
             LevelScreen nextScreen = new LevelScreen(main, levelFactory.createLevel(levelIdx), levelFactory);
             main.screenManager.switchScreensDirectly(new LevelCompleted(main,nextScreen, levelFailed), SlideOutTransition.SlideDirection.LEFT);
