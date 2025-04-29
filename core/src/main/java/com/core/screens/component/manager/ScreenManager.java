@@ -1,12 +1,12 @@
 package com.core.screens.component.manager;
 
 import com.badlogic.gdx.Screen;
+import com.core.screens.component.transition.SlideOutTransition;
 import com.core.screens.component.transition.SlidingRevealTransition;
 import com.core.screens.mainscreen.MainMenuScreen;
 import com.core.screens.subscreen.learn.LearningScreen;
 import com.core.screens.subscreen.play.category.CategorySelectScreen;
 import com.core.screens.subscreen.play.levelselect.LevelSelectScreen;
-import com.core.screens.component.transition.SlideOutTransition;
 import com.main.Main;
 
 import java.util.Stack;

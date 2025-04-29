@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.core.screens.subscreen.play.levelselect.component.factory.CategoryButtonFactory;
 import com.core.screens.component.base.BaseSubScreen;
+import com.core.screens.subscreen.play.levelselect.component.factory.CategoryButtonFactory;
 import com.main.Main;
 
 public class LevelSelectScreen extends BaseSubScreen {

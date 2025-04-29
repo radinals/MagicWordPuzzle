@@ -8,13 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.core.assets.sprites.GameAssets;
+import com.core.screens.component.base.BaseSubScreen;
 import com.core.screens.component.events.ButtonClickWithFx;
-import com.core.screens.component.events.SingleClickInputListener;
 import com.core.screens.subscreen.play.level.component.Level;
 import com.core.screens.subscreen.play.level.component.btn.group.ButtonPair;
 import com.core.screens.subscreen.play.level.component.event.LevelCompleteEvent;
 import com.core.screens.subscreen.play.level.component.lines.LineManager;
-import com.core.screens.component.base.BaseSubScreen;
 import com.core.screens.subscreen.play.levelselect.component.factory.LevelFactory;
 import com.main.Main;
 

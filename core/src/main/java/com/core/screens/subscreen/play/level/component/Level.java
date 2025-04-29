@@ -5,9 +5,9 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.core.assets.sprites.GameAssets;
-import com.core.screens.subscreen.play.level.component.event.LevelEventListener;
 import com.core.screens.subscreen.play.level.component.btn.factory.LevelButtonFactory;
 import com.core.screens.subscreen.play.level.component.btn.group.ButtonPair;
+import com.core.screens.subscreen.play.level.component.event.LevelEventListener;
 import com.core.screens.subscreen.play.level.component.lines.LineManager;
 import com.core.screens.subscreen.play.level.component.randomizer.LevelRandomizer;
 

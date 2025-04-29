@@ -1,11 +1,9 @@
 package com.core.screens.subscreen.learn;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -15,7 +13,6 @@ import com.badlogic.gdx.utils.Align;
 import com.core.assets.sprites.GameAssets;
 import com.core.model.data.CardData;
 import com.core.screens.component.base.BaseSubScreen;
-import com.core.screens.component.events.ButtonClickWithFx;
 import com.core.screens.component.events.SingleClickInputListener;
 import com.main.Main;
 

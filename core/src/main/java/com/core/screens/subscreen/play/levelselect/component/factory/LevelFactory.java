@@ -4,7 +4,6 @@ import com.core.model.data.CardData;
 import com.core.model.data.CategoryData;
 import com.core.model.data.LevelData;
 import com.core.screens.subscreen.play.level.component.Level;
-import com.core.screens.subscreen.play.level.component.event.LevelCompleteEvent;
 import com.main.Main;
 
 public class LevelFactory {

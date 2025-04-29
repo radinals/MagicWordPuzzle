@@ -7,10 +7,10 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.core.screens.component.events.ButtonClickWithFx;
 import com.core.assets.sprites.GameAssets;
 import com.core.model.data.CategoryData;
 import com.core.screens.component.base.BaseSubScreen;
+import com.core.screens.component.events.ButtonClickWithFx;
 import com.main.Main;
 
 public class CategorySelectScreen extends BaseSubScreen {

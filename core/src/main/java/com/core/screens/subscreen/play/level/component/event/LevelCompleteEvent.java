@@ -1,15 +1,14 @@
 package com.core.screens.subscreen.play.level.component.event;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.core.assets.sprites.GameAssets;
+import com.core.screens.component.transition.SlideOutTransition;
 import com.core.screens.mainscreen.MainMenuScreen;
 import com.core.screens.subscreen.play.level.LevelScreen;
 import com.core.screens.subscreen.play.level.component.screen.LevelCompleted;
 import com.core.screens.subscreen.play.levelselect.component.factory.LevelFactory;
-import com.core.screens.component.transition.SlideOutTransition;
 import com.main.Main;
 
 public class LevelCompleteEvent implements LevelEventListener {

@@ -2,13 +2,11 @@ package com.core.screens.subscreen.play.levelselect.component.btn.event;
 
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.core.screens.component.events.ButtonClickWithFx;
+import com.core.screens.component.transition.SlideOutTransition;
 import com.core.screens.subscreen.play.level.LevelScreen;
 import com.core.screens.subscreen.play.levelselect.component.btn.LevelBtn;
 import com.core.screens.subscreen.play.levelselect.component.factory.LevelFactory;
-import com.core.screens.component.transition.SlideOutTransition;
 import com.main.Main;
-
-import java.awt.Image;
 
 public class ClickedEvent extends ButtonClickWithFx {
 
